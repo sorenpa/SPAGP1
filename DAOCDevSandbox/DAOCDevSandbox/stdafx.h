@@ -7,15 +7,14 @@
 
 #include "targetver.h"
 
-
-#include <WinSock2.h>
+#include <WinSock2.h> 
 #include <Windows.h>
 #include <ws2tcpip.h>
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <vector> //dyn Array
-#include <map> //HashMap
+#include <vector> 
+#include <map> 
 //#include <stdarg.h>
 //#include <string.h>
 //#include <assert.h>
@@ -29,8 +28,3 @@
 #include <iostream>
 #include <fstream>
 
-
-
-
-
-// TODO: reference additional headers your program requires here

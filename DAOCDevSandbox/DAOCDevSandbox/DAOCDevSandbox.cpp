@@ -33,6 +33,13 @@ int main()
 	**************************************************************/
 	MpkFileReader *reader = new MpkFileReader();
 	
+
+	
+	reader->init(L"C:\\projects\\SPAGP1\\DAOCDevSandbox\\DAOCDevSandbox\\Zones\\Resources\\dat105.mpk");
+
+
+
+
     return 0;
 }
 

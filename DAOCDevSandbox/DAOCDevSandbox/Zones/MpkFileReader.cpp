@@ -1,4 +1,3 @@
-
 #include "stdafx.h"
 #include "MpkFileReader.h"
 
@@ -6,7 +5,11 @@ MpkFileReader::MpkFileReader() {
 	last_stage=0;
 }
 
-bool MpkFileReader::init(char * file) {
+MpkFileReader::~MpkFileReader()
+{
+}
+
+bool MpkFileReader::init(const wchar_t * file) {
 	int inlen = 0;
 	int stage = 0;
 	char inbuf[16384],outbuf[16384];
@@ -15,8 +18,8 @@ bool MpkFileReader::init(char * file) {
 	FILE *fp;
 
 	errno_t err;
-	if ((err = fopen_s(&fp, file, "rb")) != 0) {
-		errorString = "Error opening file";//,file; //TODO format string err msg
+	if ((err = _wfopen_s(&fp, file, L"rb")) != 0) {
+		errorString = "Error opening file";
 		return false;
 	}
 
@@ -25,7 +28,7 @@ bool MpkFileReader::init(char * file) {
 	fread (inbuf,1,4,fp);
 	inbuf[4]='\0';
 	if ( strcmp("MPAK",inbuf) ) {
-		errorString="Not a valid MPAK file"; //TODO format string  err msg
+		errorString="Not a valid MPAK file";
 		return(false);	
 	}
 	// zstream start
@@ -43,7 +46,7 @@ bool MpkFileReader::init(char * file) {
 		stream.avail_out = sizeof(outbuf);
 		rc = inflate(&stream, 0);
 		if (rc != Z_STREAM_END && rc != Z_OK) {
-			errorString = "inflate returned"; //rc); //TODO err msg
+			errorString = "inflate returned"; 
 			return(false);
 		}
         if ((char*)stream.next_out > outbuf)
@@ -61,10 +64,10 @@ bool MpkFileReader::init(char * file) {
     }
 	inflateEnd(&stream);
 	fclose(fp);
-	return(true);
+	return true;
 }
 
-bool MpkFileReader::extract(const wchar_t* path, char* filename) {
+bool MpkFileReader::extract(const wchar_t* path, const wchar_t* filename) {
 	
 	DWORD dwAttrib = GetFileAttributes(path);
 
@@ -72,33 +75,26 @@ bool MpkFileReader::extract(const wchar_t* path, char* filename) {
 	if (dwAttrib != INVALID_FILE_ATTRIBUTES &&
 		(dwAttrib & FILE_ATTRIBUTE_DIRECTORY))
 	{
-		//TODO: print some error string
+		errorString = "Error filename not found";
 		return false;
 	}
 
 	HANDLE hFind;
 	WIN32_FIND_DATA data;
 
+	//TODO chack if file_data containts the file name
 	bool fileFound = false;
-	hFind = FindFirstFile(path, &data);
-	if (hFind != INVALID_HANDLE_VALUE) {
-		do {
-			//TODO: use strcmp to see if the file is in the dir
-			printf("%ws\n", data.cFileName);
-		} while (FindNextFile(hFind, &data));
-		FindClose(hFind);
-	}
-
 	if ( fileFound ) {
 		FILE *fp;
 
 		errno_t err;
-		if ((err = fopen_s(&fp, filename, "rb")) != 0) {
-			errorString = "Error opening file";//,file; //TODO format string err msg
+		if ((err = _wfopen_s(&fp, filename, L"rb")) != 0) {
+			errorString = "Error opening file";
 			return false;
 		}
 
-		//Todo write something to the file
+		//TODO write something to the file
+		//file.write(file_data[filename]);
 
 		fclose(fp);
 
@@ -112,32 +108,66 @@ bool MpkFileReader::extract(const wchar_t* path, char* filename) {
 
 
 
-void MpkFileReader::upload (int stage,char *data,int len) {
+void MpkFileReader::upload (int stage, char *data, int len) {
 	// actions
 	if ( stage != last_stage ) {
 		switch ( last_stage )
 		{
+			int trimIndex;
 			case 0:
 				//packet.append(QString(packetname_block.trimmed().toLower()));
 				//TODO append packetname_block.trimmed().toLower() to packet
+				
+				//TODO trim + lowercase
+
+				//append packetname_block to packet;
+				packet.append(packetname_block);
 				break;
 			case 1:
-				for (int i=0 ; i < strlen(filenames_block) ; i += 0x11c )
-					//fileNames.append(QString(filenames_block.mid(i,0x11c).trimmed().toLower()));
-					//TODO append filenames_block.mid(i,0x11c).trimmed().toLower()
+				for (int i = 0; i < filenames_block.size(); i += 0x11c)
+				{
+				//	/*
+				//	QByteArray::mid(int pos, int len = -1) const
+
+				//	Returns a byte array containing len bytes from this byte array, starting at position pos.
+
+				//	If len is -1 (the default), or pos + len >= size(), returns a byte array containing all bytes starting at position pos until the end of the byte array.
+				//	
+				//	//fileNames.append(QString(filenames_block.mid(i,0x11c).trimmed().toLower()));
+				//	//TODO append filenames_block.mid(i,0x11c).trimmed().toLower()
+				//	*/
+
+					char block[0x11c];
+					int j = 0;
+					for (j = 0; j < filenames_block.size(); j++)
+					{
+							char c = 
+							block[j] = filenames_block[i + j];
+					}
+					block[j] = '\0';
+
+					//TODO: trim + lowercase
+
+					fileNames.push_back(block);
+				}
 				break;
 		}
 	}
 
-	if ( stage == 0 )
-		//packetname_block.append(data,len);	
-		//TODO
-	if ( stage == 1 )
-		//filenames_block.append(data,len);
-		//TODO
-	if ( stage > 1) //&& fileNames[stage-2] != nullptr )//TODO
-		//file_data[ fileNames.at((stage-2)) ].append(data,len);
-		//TODO
+	if (stage == 0)
+	{
+		packetname_block.append(data);
+	}
+	
+	if (stage == 1)
+	{
+		filenames_block.append(data);
+	}
+
+	if (stage > 1)//TODO
+	{
+		file_data.insert(std::pair<std::string,std::string>(fileNames[(stage - 2)], data));
+	}
 
 	last_stage=stage;		
 }

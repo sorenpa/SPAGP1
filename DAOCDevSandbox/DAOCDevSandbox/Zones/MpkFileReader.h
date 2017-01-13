@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef MPK_FILE_READER_H
 #define MPK_FILE_READER_H
 
@@ -9,18 +11,20 @@ class MpkFileReader
 public:
 
 	MpkFileReader();
-	bool init(char *);
+	~MpkFileReader();
+	bool init(const wchar_t*);
 	char* errorString;
-	bool extract(const wchar_t* path,char* filename);
-	void upload(int stage, char *data, int len);
+	bool extract(const wchar_t* path, const wchar_t* filename);
+	void upload(int stage, char* data, int len);
 
 private:
-	char * packetname_block;
-	char * filenames_block;
+	std::string packetname_block = "";
+	std::string filenames_block = "";
 	int last_stage;
-	char* packet;
+	std::string packet = "";
+	std::vector<byte> packetname_block_vec;
 	std::vector<std::string> fileNames;
-	std::map<std::string, char[]> file_data;
+	std::map<std::string, std::string> file_data;
 };
 
 #endif // MPK_FILE_READER_H
