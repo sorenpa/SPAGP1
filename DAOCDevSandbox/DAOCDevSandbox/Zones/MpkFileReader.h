@@ -12,19 +12,17 @@ public:
 
 	MpkFileReader();
 	~MpkFileReader();
-	bool init(const wchar_t*);
+	bool init(const char*);
 	char* errorString;
-	bool extract(const wchar_t* path, const wchar_t* filename);
+	bool extract(const char* path, const char* filename);
 	void upload(int stage, char* data, int len);
 
 private:
-	std::string packetname_block = "";
-	std::string filenames_block = "";
-	int last_stage;
-	std::string packet = "";
-	std::vector<byte> packetname_block_vec;
-	std::vector<std::string> fileNames;
-	std::map<std::string, std::string> file_data;
+	int _lastStage;
+	std::string _mpkName = "";
+	std::string _filenamesBlock = "";
+	std::vector<std::string> _fileNames;
+	std::map<std::string, std::string> _fileData;
 };
 
 #endif // MPK_FILE_READER_H

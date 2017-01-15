@@ -1,15 +1,16 @@
 #include "stdafx.h"
 #include "MpkFileReader.h"
 
-MpkFileReader::MpkFileReader() {
-	last_stage=0;
+MpkFileReader::MpkFileReader() 
+{
+	_lastStage = -1;
 }
 
 MpkFileReader::~MpkFileReader()
 {
 }
 
-bool MpkFileReader::init(const wchar_t * file) {
+bool MpkFileReader::init(const char* file) {
 	int inlen = 0;
 	int stage = 0;
 	char inbuf[16384],outbuf[16384];
@@ -18,7 +19,7 @@ bool MpkFileReader::init(const wchar_t * file) {
 	FILE *fp;
 
 	errno_t err;
-	if ((err = _wfopen_s(&fp, file, L"rb")) != 0) {
+	if ((err = fopen_s(&fp, file, "rb")) != 0) {
 		errorString = "Error opening file";
 		return false;
 	}
@@ -29,7 +30,7 @@ bool MpkFileReader::init(const wchar_t * file) {
 	inbuf[4]='\0';
 	if ( strcmp("MPAK",inbuf) ) {
 		errorString="Not a valid MPAK file";
-		return(false);	
+		return false;	
 	}
 	// zstream start
 	fseek(fp, 21, SEEK_SET);
@@ -39,24 +40,36 @@ bool MpkFileReader::init(const wchar_t * file) {
 	inflateInit(&stream); 
 	while (!feof(fp) || inlen > 0) {
 		int rc=0;
+
+		/* .. read some data */
 		inlen += fread(inbuf + inlen, 1, sizeof(inbuf) - inlen, fp);
+
+		/* .. decompress it */
 		stream.next_in = (unsigned char *)inbuf;
 		stream.avail_in = inlen;
+		
 		stream.next_out = (unsigned char *)outbuf;
 		stream.avail_out = sizeof(outbuf);
+
 		rc = inflate(&stream, 0);
 		if (rc != Z_STREAM_END && rc != Z_OK) {
+			/* decompression error */
 			errorString = "inflate returned"; 
-			return(false);
+			return false;
 		}
+
+		/* if we have some decompressed data, process it */
         if ((char*)stream.next_out > outbuf)
 			upload(stage, outbuf, (char*)stream.next_out - outbuf);
 
+		/* if zlib consumed some data, rearrange our buffers */
 		if ((char*)stream.next_in > inbuf) {
 			memmove(inbuf, stream.next_in, stream.avail_in);
 			inlen = stream.avail_in;
 		}
 		if (rc == Z_STREAM_END) {
+			/* end of compression stream, reinit the decompressor for the */
+			/* next stream */
 			++stage;
 			inflateEnd(&stream);
 			inflateInit(&stream);
@@ -67,38 +80,43 @@ bool MpkFileReader::init(const wchar_t * file) {
 	return true;
 }
 
-bool MpkFileReader::extract(const wchar_t* path, const wchar_t* filename) {
+bool MpkFileReader::extract(const char* path, const char* filename) {
 	
-	DWORD dwAttrib = GetFileAttributes(path);
+	DWORD dwAttrib = GetFileAttributesA(path);
 
 	//Check if path exists
-	if (dwAttrib != INVALID_FILE_ATTRIBUTES &&
-		(dwAttrib & FILE_ATTRIBUTE_DIRECTORY))
+	if (!(dwAttrib != INVALID_FILE_ATTRIBUTES &&
+		(dwAttrib & FILE_ATTRIBUTE_DIRECTORY)))
 	{
 		errorString = "Error filename not found";
 		return false;
 	}
 
-	HANDLE hFind;
-	WIN32_FIND_DATA data;
-
-	//TODO chack if file_data containts the file name
-	bool fileFound = false;
-	if ( fileFound ) {
+	//Check if the file could be found in _fileData
+	std::map<std::string, std::string>::iterator it = _fileData.find(filename);
+	if (it != _fileData.end()) 
+	{
 		FILE *fp;
 
+		//TODO: add path to file name
+		std::string file = path;
+		file.append(filename);
+
+		//TODO:Create file if it does not exist
+
 		errno_t err;
-		if ((err = _wfopen_s(&fp, filename, L"rb")) != 0) {
+		if ((err = fopen_s(&fp, filename, "wb")) != 0) {
 			errorString = "Error opening file";
 			return false;
 		}
 
-		//TODO write something to the file
-		//file.write(file_data[filename]);
+		const char* buffer = it->second.c_str();
+
+		fwrite(buffer, sizeof(char), sizeof(buffer), fp);
 
 		fclose(fp);
-
-	} else {
+	}
+	else {
 		errorString="Can't find data for file";
 		return false;
 	}
@@ -110,64 +128,52 @@ bool MpkFileReader::extract(const wchar_t* path, const wchar_t* filename) {
 
 void MpkFileReader::upload (int stage, char *data, int len) {
 	// actions
-	if ( stage != last_stage ) {
-		switch ( last_stage )
-		{
-			int trimIndex;
-			case 0:
-				//packet.append(QString(packetname_block.trimmed().toLower()));
-				//TODO append packetname_block.trimmed().toLower() to packet
-				
-				//TODO trim + lowercase
+	switch ( stage )
+	{
+		int trimIndex;
+		case 0:
+			_mpkName.append(data,len);
+			break;
+		case 1: //Process filenames
+			for (int offset = 0; offset < len; offset += 0x11c)
+			{
+				char fileName[1024];
+				char* p;
+				int i;
 
-				//append packetname_block to packet;
-				packet.append(packetname_block);
-				break;
-			case 1:
-				for (int i = 0; i < filenames_block.size(); i += 0x11c)
+				for (i = 0; i < 0x11c; i++)
 				{
-				//	/*
-				//	QByteArray::mid(int pos, int len = -1) const
 
-				//	Returns a byte array containing len bytes from this byte array, starting at position pos.
-
-				//	If len is -1 (the default), or pos + len >= size(), returns a byte array containing all bytes starting at position pos until the end of the byte array.
-				//	
-				//	//fileNames.append(QString(filenames_block.mid(i,0x11c).trimmed().toLower()));
-				//	//TODO append filenames_block.mid(i,0x11c).trimmed().toLower()
-				//	*/
-
-					char block[0x11c];
-					int j = 0;
-					for (j = 0; j < filenames_block.size(); j++)
-					{
-							char c = 
-							block[j] = filenames_block[i + j];
-					}
-					block[j] = '\0';
-
-					//TODO: trim + lowercase
-
-					fileNames.push_back(block);
+					if (data[offset + i] == '\0')
+						break;
+					
+					fileName[i] = data[offset + i];
 				}
+				fileName[i] = '\0';
+				
+				//To lower
+				p = fileName;
+				while (*p)
+				{
+					*p = tolower(*p), p++;
+				}
+
+				_fileNames.push_back(fileName);
+			}
+			break;
+		default: //stage > 1, file data
+			if (stage != _lastStage)
+			{
+				_fileData.insert(std::pair<std::string, std::string>(_fileNames[(stage - 2)], data));
 				break;
-		}
+			}
+
+			std::map<std::string, std::string>::iterator it = _fileData.find(_fileNames[(stage - 2)]);
+			if (it != _fileData.end())
+			{
+				it->second.append(data, len);
+			}
 	}
 
-	if (stage == 0)
-	{
-		packetname_block.append(data);
-	}
-	
-	if (stage == 1)
-	{
-		filenames_block.append(data);
-	}
-
-	if (stage > 1)//TODO
-	{
-		file_data.insert(std::pair<std::string,std::string>(fileNames[(stage - 2)], data));
-	}
-
-	last_stage=stage;		
+	_lastStage = stage;
 }
