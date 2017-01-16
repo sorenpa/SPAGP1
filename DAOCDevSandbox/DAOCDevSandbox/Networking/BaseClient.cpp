@@ -1,5 +1,5 @@
 
-#include "stdafx.h"
+#include "../stdafx.h"
 #include "BaseClient.h"
 
 #define DEFAULT_BUFLEN 512

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+#include "../stdafx.h"
 #include "MpkFileReader.h"
 
 MpkFileReader::MpkFileReader() 
@@ -130,7 +130,6 @@ void MpkFileReader::upload (int stage, char *data, int len) {
 	// actions
 	switch ( stage )
 	{
-		int trimIndex;
 		case 0:
 			_mpkName.append(data,len);
 			break;

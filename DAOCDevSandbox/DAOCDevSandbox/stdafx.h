@@ -4,6 +4,7 @@
 //
 
 #pragma once
+#pragma message("Compiling precompiled headers.\n")
 
 #include "targetver.h"
 
@@ -27,4 +28,3 @@
 //#include <tchar.h>
 #include <iostream>
 #include <fstream>
-
