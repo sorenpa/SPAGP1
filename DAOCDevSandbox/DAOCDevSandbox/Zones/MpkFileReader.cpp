@@ -11,9 +11,11 @@ MpkFileReader::~MpkFileReader()
 }
 
 bool MpkFileReader::init(const char* file) {
+	_offset = 0;
+
 	int inlen = 0;
 	int stage = 0;
-	char inbuf[16384],outbuf[16384];
+	char inbuf[1024],outbuf[1024];
 	z_stream stream;
 	
 	FILE *fp;
@@ -75,12 +77,13 @@ bool MpkFileReader::init(const char* file) {
 			inflateInit(&stream);
 		}
     }
+
 	inflateEnd(&stream);
 	fclose(fp);
 	return true;
 }
 
-bool MpkFileReader::extract(const char* path, const char* filename) {
+bool MpkFileReader::extract(char* path, char* filename) {
 	
 	DWORD dwAttrib = GetFileAttributesA(path);
 
@@ -92,29 +95,26 @@ bool MpkFileReader::extract(const char* path, const char* filename) {
 		return false;
 	}
 
-	//Check if the file could be found in _fileData
-	std::map<std::string, std::string>::iterator it = _fileData.find(filename);
+	//Check if the filePath could be found in _fileData
+	std::map<std::string, std::pair<int, char*>>::iterator it = _fileData.find(filename);
 	if (it != _fileData.end()) 
 	{
-		FILE *fp;
+		std::string filePath = path;
+		filePath.append(filename);
 
-		//TODO: add path to file name
-		std::string file = path;
-		file.append(filename);
+		std::ofstream outStream;
+		outStream.open(filePath, std::ios::binary);
 
-		//TODO:Create file if it does not exist
-
-		errno_t err;
-		if ((err = fopen_s(&fp, filename, "wb")) != 0) {
+		if (!outStream.is_open())
+		{
 			errorString = "Error opening file";
 			return false;
 		}
 
-		const char* buffer = it->second.c_str();
+		std::pair<int, char*> data = it->second;
+		outStream.write(data.second,data.first);
 
-		fwrite(buffer, sizeof(char), sizeof(buffer), fp);
-
-		fclose(fp);
+		outStream.close();
 	}
 	else {
 		errorString="Can't find data for file";
@@ -125,54 +125,64 @@ bool MpkFileReader::extract(const char* path, const char* filename) {
 }
 
 
-
 void MpkFileReader::upload (int stage, char *data, int len) {
-	// actions
-	switch ( stage )
+
+	//select the buffer
+	std::vector<char> *buffer = &_fileDataBuffer;
+	if (stage == 0)
+		buffer = &_packetBuffer;
+	if (stage == 1)
+		buffer = &_filenamesBuffer;
+
+	//Accumulate data into buffer
+	for (int i = 0; i < len; i++)
+	{
+		buffer->push_back(data[i]);
+	}
+
+	switch (stage)
 	{
 		case 0:
-			_mpkName.append(data,len);
+		{
+			std::string packetName(buffer->begin(), buffer->end());
+			_mpkName.append(packetName);
 			break;
+		}
 		case 1: //Process filenames
-			for (int offset = 0; offset < len; offset += 0x11c)
+		{
+			for (; _offset < buffer->size(); _offset += 0x11c)
 			{
-				char fileName[1024];
-				char* p;
-				int i;
+				//check for buffer "overflow"
+				if(_offset + 0x11c > buffer->size())
+					break;
 
-				for (i = 0; i < 0x11c; i++)
-				{
+				std::string filename(buffer->begin() + _offset, buffer->begin() + _offset + 0x11c);
+				std::transform(filename.begin(), filename.end(), filename.begin(), ::tolower);
 
-					if (data[offset + i] == '\0')
-						break;
-					
-					fileName[i] = data[offset + i];
-				}
-				fileName[i] = '\0';
-				
-				//To lower
-				p = fileName;
-				while (*p)
-				{
-					*p = tolower(*p), p++;
-				}
-
-				_fileNames.push_back(fileName);
+				_fileNames.push_back(filename);
 			}
 			break;
-		default: //stage > 1, file data
-			if (stage != _lastStage)
+		}
+		default: //stage > 1, filePath data
+		{
+			if (stage != _lastStage) //new stage!
 			{
-				_fileData.insert(std::pair<std::string, std::string>(_fileNames[(stage - 2)], data));
-				break;
-			}
+				size_t bufLen = buffer->size()-len;
+				char *fDataPtr = new char[bufLen];
 
-			std::map<std::string, std::string>::iterator it = _fileData.find(_fileNames[(stage - 2)]);
-			if (it != _fileData.end())
-			{
-				it->second.append(data, len);
+				for (int i = 0; i < bufLen; i++)
+					fDataPtr[i] = buffer->at(i);
+
+				std::pair<int, char*> pair = std::pair<int, char*>(bufLen,fDataPtr);
+				_fileData.insert(std::pair<std::string, std::pair<int, char*>>(_fileNames[(stage - 2)], pair));
+				
+				//the last portion of of the buffer, belongs to the next stage
+				buffer->erase(buffer->begin(), buffer->end()-len);
 			}
+		}
 	}
+
+
 
 	_lastStage = stage;
 }
