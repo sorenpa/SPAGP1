@@ -4,6 +4,9 @@
 #define MPK_FILE_READER_H
 
 #include <zlib.h>
+#include <iostream>
+#include <fstream>
+#include <algorithm>
 
 class MpkFileReader 
 {
@@ -14,15 +17,19 @@ public:
 	~MpkFileReader();
 	bool init(const char*);
 	char* errorString;
-	bool extract(const char* path, const char* filename);
+	bool extract(char* path, char* filename);
 	void upload(int stage, char* data, int len);
 
 private:
 	int _lastStage;
+	int _offset;
+	char* _tmpPtr;
+	std::vector<char> _packetBuffer;
+	std::vector<char> _filenamesBuffer;
+	std::vector<char> _fileDataBuffer;
 	std::string _mpkName = "";
-	std::string _filenamesBlock = "";
 	std::vector<std::string> _fileNames;
-	std::map<std::string, std::string> _fileData;
+	std::map<std::string, std::pair<int, char*>> _fileData;
 };
 
 #endif // MPK_FILE_READER_H

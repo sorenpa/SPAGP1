@@ -35,9 +35,9 @@ int main()
 	
 
 	
-	//reader->init(L"C:\\projects\\SPAGP1\\DAOCDevSandbox\\DAOCDevSandbox\\Zones\\Resources\\dat105.mpk");
-	reader->init("C:\\Projects\\Gaming\\DAOC\\SPAGP1\\DAOCDevSandbox\\DAOCDevSandbox\\Zones\\Resources\\dat105.mpk");
-	reader->extract("C:\\tmp\\", "offset.pcx");
+	reader->init("C:\\projects\\SPAGP1\\DAOCDevSandbox\\DAOCDevSandbox\\Zones\\Resources\\dat105.mpk");
+	//reader->init("C:\\Projects\\Gaming\\DAOC\\SPAGP1\\DAOCDevSandbox\\DAOCDevSandbox\\Zones\\Resources\\dat105.mpk");
+	reader->extract("C:\\temp\\", "offset.pcx");
 //C:\Projects\Gaming\DAOC\SPAGP1\DAOCDevSandbox\DAOCDevSandbox\Zones\Resources
 
 
