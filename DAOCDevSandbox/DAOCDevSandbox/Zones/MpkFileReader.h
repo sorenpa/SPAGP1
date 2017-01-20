@@ -6,7 +6,6 @@
 #include <zlib.h>
 #include <iostream>
 #include <fstream>
-#include <algorithm>
 
 class MpkFileReader 
 {
@@ -29,7 +28,7 @@ private:
 	std::vector<char> _fileDataBuffer;
 	std::string _mpkName = "";
 	std::vector<std::string> _fileNames;
-	std::map<std::string, std::pair<int, char*>> _fileData;
+	std::map<std::string, std::vector<char>> _fileData;
 };
 
 #endif // MPK_FILE_READER_H
