@@ -95,8 +95,8 @@ bool MpkFileReader::extract(char* path, char* filename) {
 		return false;
 	}
 
-	//Check if the filePath could be found in _fileData
-	std::map<std::string, std::pair<int, char*>>::iterator it = _fileData.find(filename);
+	//Check if the filename could be found in _fileData
+	std::map<std::string, std::vector<char>>::iterator it = _fileData.find(filename);
 	if (it != _fileData.end()) 
 	{
 		std::string filePath = path;
@@ -111,8 +111,7 @@ bool MpkFileReader::extract(char* path, char* filename) {
 			return false;
 		}
 
-		std::pair<int, char*> data = it->second;
-		outStream.write(data.second,data.first);
+		outStream.write(&it->second[0],it->second.size());
 
 		outStream.close();
 	}
@@ -127,62 +126,54 @@ bool MpkFileReader::extract(char* path, char* filename) {
 
 void MpkFileReader::upload (int stage, char *data, int len) {
 
-	//select the buffer
-	std::vector<char> *buffer = &_fileDataBuffer;
-	if (stage == 0)
-		buffer = &_packetBuffer;
-	if (stage == 1)
-		buffer = &_filenamesBuffer;
-
-	//Accumulate data into buffer
-	for (int i = 0; i < len; i++)
-	{
-		buffer->push_back(data[i]);
-	}
-
 	switch (stage)
 	{
 		case 0:
 		{
-			std::string packetName(buffer->begin(), buffer->end());
-			_mpkName.append(packetName);
+			_mpkName.append(data);
 			break;
 		}
 		case 1: //Process filenames
 		{
-			for (; _offset < buffer->size(); _offset += 0x11c)
+			//Accumulate data into buffer
+			for (int i = 0; i < len; i++)
 			{
-				//check for buffer "overflow"
-				if(_offset + 0x11c > buffer->size())
+				_filenamesBuffer.push_back(data[i]);
+			}
+
+			for (; _offset < _filenamesBuffer.size(); _offset += 0x11c)
+			{
+				////check for buffer "overflow"
+				if(_offset + 0x11c > _filenamesBuffer.size())
 					break;
 
-				std::string filename(buffer->begin() + _offset, buffer->begin() + _offset + 0x11c);
-				std::transform(filename.begin(), filename.end(), filename.begin(), ::tolower);
+				size_t nameLen = strlen(&_filenamesBuffer[_offset]);
+				char *filename = new char[nameLen];
+				//Accumulate data into buffer
+				for (int i = 0; i <= nameLen; i++)
+				{
+					filename[i] = _filenamesBuffer[_offset + i];
+				}
 
 				_fileNames.push_back(filename);
 			}
 			break;
 		}
-		default: //stage > 1, filePath data
+		default: //stage > 1, file data
 		{
-			if (stage != _lastStage) //new stage!
+			//find the iterator pointing to the relevant file data vector. If it does not exist, create it.
+			std::map<std::string, std::vector<char>>::iterator it = _fileData.find(_fileNames[(stage - 2)]);
+			if (it == _fileData.end())
 			{
-				size_t bufLen = buffer->size()-len;
-				char *fDataPtr = new char[bufLen];
-
-				for (int i = 0; i < bufLen; i++)
-					fDataPtr[i] = buffer->at(i);
-
-				std::pair<int, char*> pair = std::pair<int, char*>(bufLen,fDataPtr);
-				_fileData.insert(std::pair<std::string, std::pair<int, char*>>(_fileNames[(stage - 2)], pair));
-				
-				//the last portion of of the buffer, belongs to the next stage
-				buffer->erase(buffer->begin(), buffer->end()-len);
+				std::vector<char> fileData;
+				_fileData.insert(std::pair<std::string, std::vector<char>>(_fileNames[(stage - 2)], fileData));
+				it = _fileData.find(_fileNames[(stage - 2)]);
 			}
+
+			for (int i = 0; i < len; i++)
+				it->second.push_back(data[i]);
 		}
 	}
-
-
 
 	_lastStage = stage;
 }

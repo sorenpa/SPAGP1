@@ -4,10 +4,10 @@
 #include "stdafx.h"
 #include "Networking\BaseClient.h"
 #include "Zones\MpkFileReader.h"
+#include "Zones\PcxConverter.h"
 
 int main()
 {
-
 	/**************************************************************
 	* Basick networking client
 	**************************************************************/
@@ -32,17 +32,19 @@ int main()
 	* Loading of mpak data
 	**************************************************************/
 	MpkFileReader *reader = new MpkFileReader();
-	
 
-	
-	reader->init("C:\\projects\\SPAGP1\\DAOCDevSandbox\\DAOCDevSandbox\\Zones\\Resources\\dat105.mpk");
+	//reader->init("C:\\projects\\SPAGP1\\DAOCDevSandbox\\DAOCDevSandbox\\Zones\\Resources\\dat105.mpk");
 	//reader->init("C:\\Projects\\Gaming\\DAOC\\SPAGP1\\DAOCDevSandbox\\DAOCDevSandbox\\Zones\\Resources\\dat105.mpk");
-	reader->extract("C:\\temp\\", "offset.pcx");
-//C:\Projects\Gaming\DAOC\SPAGP1\DAOCDevSandbox\DAOCDevSandbox\Zones\Resources
+	//reader->extract("C:\\temp\\", "offset.pcx");
+	//C:\Projects\Gaming\DAOC\SPAGP1\DAOCDevSandbox\DAOCDevSandbox\Zones\Resources
 
+	/**************************************************************
+	* Read .pcx data
+	**************************************************************/
+	PcxConverter *conver = new PcxConverter();
 
-
-
+	char data;
+	conver->readPCX("C:\\temp\\offset.pcx", &data);
     return 0;
 }
 
