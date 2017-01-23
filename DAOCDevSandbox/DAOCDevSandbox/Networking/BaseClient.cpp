@@ -4,10 +4,24 @@
 
 #define DEFAULT_BUFLEN 512
 
+/*
+====================
+BaseClient
+
+	Constructor
+====================
+*/
 BaseClient::BaseClient()
 {
 }
 
+/*
+====================
+~BaseClient
+
+	Destructor
+====================
+*/
 BaseClient::~BaseClient() 
 {
 	// cleanup
@@ -15,15 +29,23 @@ BaseClient::~BaseClient()
 	WSACleanup();
 }
 
-int BaseClient::connect(PCSTR address, PCSTR port)
+/*
+=============================================================
+Connect
+
+	Attempts to establish a TCP/IP socket connection to remote 
+	end point specified by 'address' and 'port' 
+=============================================================
+*/
+int BaseClient::Connect(PCSTR address, PCSTR port)
 {
 	int iResult;
 
 	struct addrinfo *addrInfoResult = NULL;
-	resolvePortAndAddress(address, port, &addrInfoResult);
+	ResolvePortAndAddress(address, port, &addrInfoResult);
 
 	addrinfo *ptr = NULL;
-	// Attempt to connect to an address until one succeeds
+	// Attempt to Connect to an address until one succeeds
 	for (ptr = addrInfoResult; ptr != NULL; ptr = ptr->ai_next) {
 
 		// Create a SOCKET for connecting to server
@@ -56,7 +78,15 @@ int BaseClient::connect(PCSTR address, PCSTR port)
 	return 0;
 }
 
-int BaseClient::send(char * sendBuffer, int bufferLength)
+/*
+=============================================================
+Send
+
+	Attempts to send the data in 'sendBuffer' of length 
+	'bufferlength' through the socket
+=============================================================
+*/
+int BaseClient::Send(char * sendBuffer, int bufferLength)
 {
 	// Send an initial buffer
 	int iResult = ::send(_socket, sendBuffer, bufferLength, 0);
@@ -72,7 +102,16 @@ int BaseClient::send(char * sendBuffer, int bufferLength)
 	return 0;
 }
 
-int BaseClient::recieve(char* recieveBuffer, int bufferLength)
+
+/*
+=============================================================
+Recieve
+
+	Attempts to receive data into the 'recieveBuffer' of length
+	'bufferlength' through the socket
+=============================================================
+*/
+int BaseClient::Recieve(char* recieveBuffer, int bufferLength)
 {
 	
 	int iResult = 0;
@@ -92,7 +131,15 @@ int BaseClient::recieve(char* recieveBuffer, int bufferLength)
 	return 0;
 }
 
-int BaseClient::resolvePortAndAddress(PCSTR address, PCSTR port, PADDRINFOA *addrResult)
+/*
+=============================================================
+ResolvePortAndAddress
+
+	Attempts to resolve the 'port' and 'address' and returns
+	the result through the 'addrResult' param
+=============================================================
+*/
+int BaseClient::ResolvePortAndAddress(PCSTR address, PCSTR port, PADDRINFOA *addrResult)
 {
 	int iResult;
 	//struct addrinfo  * hints;

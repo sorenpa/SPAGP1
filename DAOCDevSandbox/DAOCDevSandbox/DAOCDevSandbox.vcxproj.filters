@@ -36,6 +36,9 @@
     <ClInclude Include="Zones\MpkFileReader.h">
       <Filter>Zones</Filter>
     </ClInclude>
+    <ClInclude Include="Zones\PcxConverter.h">
+      <Filter>Zones</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -48,6 +51,9 @@
       <Filter>Networking</Filter>
     </ClCompile>
     <ClCompile Include="Zones\MpkFileReader.cpp">
+      <Filter>Zones</Filter>
+    </ClCompile>
+    <ClCompile Include="Zones\PcxConverter.cpp">
       <Filter>Zones</Filter>
     </ClCompile>
   </ItemGroup>
