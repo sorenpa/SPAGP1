@@ -149,7 +149,8 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Zones\MpkFileReader.h" />
-    <ClInclude Include="Zones\PcxConverter.h" />
+    <ClInclude Include="Zones\PcxReader.h" />
+    <ClInclude Include="Zones\ZoneDataExtractor.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DAOCDevSandbox.cpp" />
@@ -166,7 +167,10 @@
     <ClCompile Include="Zones\MpkFileReader.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
-    <ClCompile Include="Zones\PcxConverter.cpp">
+    <ClCompile Include="Zones\PcxReader.cpp">
+      <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../stdafx.h</PrecompiledHeaderFile>
+    </ClCompile>
+    <ClCompile Include="Zones\ZoneDataExtractor.cpp">
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">../stdafx.h</PrecompiledHeaderFile>
     </ClCompile>
   </ItemGroup>

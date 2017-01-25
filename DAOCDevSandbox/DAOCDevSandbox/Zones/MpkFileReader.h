@@ -23,13 +23,13 @@ class MpkFileReader
 {
 
 public:
-
 	MpkFileReader();
 	~MpkFileReader();
 	bool Decompress(const char* filename);
 	char* errorString;
 	bool Extract(char* path, char* filename);
 	std::map<std::string, std::vector<char>> GetArchiveData();
+	std::string GetArchiveName();
 
 private:
 	int _lastStage;

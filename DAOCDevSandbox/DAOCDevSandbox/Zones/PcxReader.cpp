@@ -1,7 +1,7 @@
 #include "../stdafx.h"
-#include "PcxConverter.h"
+#include "PcxReader.h"
 
-int PcxConverter::readPCX(const char* file, std::vector<unsigned char>* image)
+int PcxReader::readPCX(const char* file, std::vector<unsigned char>* image)
 {
 	std::ifstream pcxFile;
 	pcxFile.open(file, std::ios::binary);
@@ -137,25 +137,3 @@ int PcxConverter::readPCX(const char* file, std::vector<unsigned char>* image)
 	*image = imageData;
 	return 0;
 }
-
-int PcxConverter::writePng(const char * file, std::vector<unsigned char>* data)
-{
-	short width = _header.XEnd - _header.XStart + 1;
-	short height = _header.YEnd - _header.YStart + 1;
-
-	//...S
-	png::image< png::gray_pixel > image(width, height);
-	for (size_t y = 0; y < height; ++y)
-	{
-		for (size_t x = 0; x < width; ++x)
-		{
-			png::byte b = (png::byte)data->at(x*width + y);
-			image[x][y] = png::gray_pixel(b);
-		}
-	}
-
-	image.write(file);
-
-	return 0;
-}
-

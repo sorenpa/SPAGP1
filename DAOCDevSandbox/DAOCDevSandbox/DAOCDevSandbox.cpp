@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "Networking\BaseClient.h"
 #include "Zones\MpkFileReader.h"
-#include "Zones\PcxConverter.h"
+#include "Zones\PcxReader.h"
 
 int main()
 {
@@ -31,7 +31,7 @@ int main()
 	/**************************************************************
 	* Loading of mpak data
 	**************************************************************/
-	MpkFileReader *reader = new MpkFileReader();
+	//MpkFileReader *reader = new MpkFileReader();
 
 	//reader->Decompress("C:\\projects\\SPAGP1\\DAOCDevSandbox\\DAOCDevSandbox\\Zones\\Resources\\dat105.mpk");
 	//reader->Decompress("C:\\Projects\\Gaming\\DAOC\\SPAGP1\\DAOCDevSandbox\\DAOCDevSandbox\\Zones\\Resources\\dat105.mpk");
@@ -41,29 +41,15 @@ int main()
 	/**************************************************************
 	* Read .pcx data
 	**************************************************************/
-	PcxConverter *conver = new PcxConverter();
+	//PcxReader *conver = new PcxReader();
 
-	std::vector<unsigned char> data;
-	conver->readPCX("C:\\temp\\offset.pcx", &data);
+	//std::vector<unsigned char> data;
+	//conver->readPCX("C:\\temp\\offset.pcx", &data);
 
-	/*int length = 256;
-	for (size_t i = 0; i < length; i++)
-	{
-		for (size_t j = 0; j < length; j++)
-		{
-			unsigned char c = 0xFF;
+	/**************************************************************
+	* ZoneDataExtractor
+	**************************************************************/
 
-			if(i > 20 )
-			{
-				c = 0x00;
-			}
-				
-
-			data.push_back(c);
-		}
-	}*/
-
-	conver->writePng("C:\\temp\\offset.png", &data);
     return 0;
 }
 

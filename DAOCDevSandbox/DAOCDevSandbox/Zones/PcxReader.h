@@ -1,13 +1,19 @@
+/*
+===============================================================================
+PcxReader
+
+Class able to read .pcx image files into memory. Only a subset of the .pcx file
+format has been implemented, since this class is only intended to read zone
+data from the original DAOC client.
+===============================================================================
+*/
 #pragma once
 
-#ifndef PCX_CONVERTER_H
-#define PCX_CONVERTER_H
-
+#ifndef PCX_READER_H
+#define PCX_READER_H
 
 #include <iostream>
 #include <fstream>
-#include <png.h>
-#include <png++/png.hpp>
 
 struct PcxHeader
 {
@@ -31,14 +37,13 @@ struct PcxHeader
 	unsigned char Reserved2[54];     // Reserved (Always 0)
 };
 
-class PcxConverter 
+class PcxReader
 {
 public:
 	int readPCX(const char* file, std::vector<unsigned char> *data);
-	int writePng(const char* file, std::vector<unsigned char> *data);
 private:
 	PcxHeader _header;
 	char* _imgData;
 };
 
-#endif PCX_CONVERTER_H
+#endif //PCX_READER_H

@@ -26,6 +26,30 @@ MpkFileReader::~MpkFileReader()
 
 /*
 =====================================================================
+GetArchiveData
+
+Getter for the data in the decompressed archive
+=====================================================================
+*/
+std::map<std::string, std::vector<char>> MpkFileReader::GetArchiveData()
+{
+	return _fileData;
+}
+
+/*
+=====================================================================
+GetArchiveData
+
+Getter for the data in the decompressed archive
+=====================================================================
+*/
+std::string MpkFileReader::GetArchiveName()
+{
+	return _mpkName;
+}
+
+/*
+=====================================================================
 Decompress
 
 	Decompresses the .mpk file specified by 'file'. The results are
@@ -153,12 +177,13 @@ bool MpkFileReader::Extract(char* path, char* filename) {
 	return true;
 }
 
-std::map<std::string, std::vector<char>> MpkFileReader::GetArchiveData()
-{
-	return _fileData;
-}
+/*
+=====================================================================
+Upload
 
-
+	'Uploads' a decompressed data block to the relevant data objects
+=====================================================================
+*/
 void MpkFileReader::Upload (int stage, char *data, int len) {
 
 	switch (stage)
