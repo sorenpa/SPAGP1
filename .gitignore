@@ -2,11 +2,12 @@
 Intermediate
 Saved
 
+# UE4 project and engine
 *-DebugGame.dll
-SurvivalGame/Binaries/Win64/SurvivalGame.exp
-SurvivalGame/Binaries/Win64/SurvivalGame.lib
-SurvivalGame/Releases
-
+SPAGP1/Binaries/Win64/SPAGP1.exp
+SPAGP1/Binaries/Win64/SPAGP1.lib
+SPAGP1/Releases
+SPAGP1/DerrivedDataCache
 
 
 # User-specific files

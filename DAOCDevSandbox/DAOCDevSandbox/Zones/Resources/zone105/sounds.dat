@@ -1,0 +1,763 @@
+; ZONE 105
+; =======================================================================================
+[SoundRegion00]
+Name=global ambience
+Color=0
+fade_on_mp3=0
+fade_time=5
+random_sound_spacing=5
+zone_wide_sounds=1
+sound_type=1
+
+Sound00=2, 411, 0, 100, 18, 0, 0, 0 ; ZONE-SPECIFIC AMBIENCE LOOP
+
+; =======================================================================================
+[SoundRegion01]
+Name=medium day wind 1
+Color=0
+fade_on_mp3=0
+fade_time=5
+random_sound_spacing=5
+zone_wide_sounds=1
+sound_type=1
+
+; period values selected to avoid sounds always being 'in step'
+;   11, 13, 15, 17, 19, 23, 25, 29, 31, 37, 41, 43, 47, 53, 59, 61
+; period/chance values distributed to increase variability
+;   v1, v16, v2, v15, v3, v14, v4, v13, v5, v12, v6, v11, v7, v10, v8, v9
+; "medium" chance values; complement the spread of period values
+;   v16: 90%, step down by 2s, v1: 60%
+
+Sound00=1, 415, 011, 060, 06, 501, 1930, 0 ; WIND GUST 1, VOLUME 1
+Sound01=1, 415, 061, 090, 02, 501, 1930, 0 ; WIND GUST 1, VOLUME 2
+Sound02=1, 416, 013, 062, 06, 501, 1930, 0 ; WIND GUST 2, VOLUME 1
+Sound03=1, 416, 059, 088, 02, 501, 1930, 0 ; WIND GUST 2, VOLUME 2
+Sound04=1, 417, 015, 064, 06, 501, 1930, 0 ; WIND GUST 3, VOLUME 1
+Sound05=1, 417, 053, 086, 02, 501, 1930, 0 ; WIND GUST 3, VOLUME 2
+Sound06=1, 418, 017, 066, 06, 501, 1930, 0 ; WIND GUST 4, VOLUME 1
+Sound07=1, 418, 047, 084, 02, 501, 1930, 0 ; WIND GUST 4, VOLUME 2
+Sound08=1, 419, 019, 068, 06, 501, 1930, 0 ; WIND GUST 5, VOLUME 1
+Sound09=1, 419, 043, 082, 02, 501, 1930, 0 ; WIND GUST 5, VOLUME 2
+Sound10=1, 428, 023, 070, 06, 501, 1930, 0 ; BOTANY RUSTLE 1, VOLUME 1
+Sound11=1, 428, 041, 080, 02, 501, 1930, 0 ; BOTANY RUSTLE 1, VOLUME 2
+Sound12=1, 429, 025, 072, 06, 501, 1930, 0 ; BOTANY RUSTLE 2, VOLUME 1
+Sound13=1, 429, 037, 078, 02, 501, 1930, 0 ; BOTANY RUSTLE 2, VOLUME 2
+Sound14=1, 430, 029, 074, 06, 501, 1930, 0 ; BOTANY RUSTLE 3, VOLUME 1
+Sound15=1, 430, 031, 076, 02, 501, 1930, 0 ; BOTANY RUSTLE 3, VOLUME 2
+
+; =======================================================================================
+[SoundRegion02]
+Name=medium day wind 2
+Color=0
+fade_on_mp3=0
+fade_time=5
+random_sound_spacing=5
+zone_wide_sounds=1
+sound_type=1
+
+; same sounds/periods/chances as day wind 1
+; sound values distributed to increase variability
+
+Sound00=1, 430, 011, 060, 06, 501, 1930, 0
+Sound01=1, 430, 061, 090, 02, 501, 1930, 0
+Sound02=1, 429, 013, 062, 06, 501, 1930, 0
+Sound03=1, 429, 059, 088, 02, 501, 1930, 0
+Sound04=1, 428, 015, 064, 06, 501, 1930, 0
+Sound05=1, 428, 053, 086, 02, 501, 1930, 0
+Sound06=1, 419, 017, 066, 06, 501, 1930, 0
+Sound07=1, 419, 047, 084, 02, 501, 1930, 0
+Sound08=1, 418, 019, 068, 06, 501, 1930, 0
+Sound09=1, 418, 043, 082, 02, 501, 1930, 0
+Sound10=1, 417, 023, 070, 06, 501, 1930, 0
+Sound11=1, 417, 041, 080, 02, 501, 1930, 0
+Sound12=1, 416, 025, 072, 06, 501, 1930, 0
+Sound13=1, 416, 037, 078, 02, 501, 1930, 0
+Sound14=1, 415, 029, 074, 06, 501, 1930, 0
+Sound15=1, 415, 031, 076, 02, 501, 1930, 0
+
+; =======================================================================================
+[SoundRegion03]
+Name=medium day wind picks up
+Color=0
+fade_on_mp3=0
+fade_time=5
+random_sound_spacing=5
+zone_wide_sounds=1
+sound_type=1
+
+; same sounds/periods/chances as day wind 1
+; volumes greater than those of day wind 1 & 2
+
+Sound00=1, 415, 011, 060, 16, 1001, 1200, 0
+Sound01=1, 415, 061, 090, 10, 1001, 1200, 0
+Sound02=1, 416, 013, 062, 16, 1001, 1200, 0
+Sound03=1, 416, 059, 088, 10, 1001, 1200, 0
+Sound04=1, 417, 015, 064, 16, 1001, 1200, 0
+Sound05=1, 417, 053, 086, 10, 1001, 1200, 0
+Sound06=1, 418, 017, 066, 16, 1001, 1200, 0
+Sound07=1, 418, 047, 084, 10, 1001, 1200, 0
+Sound08=1, 419, 019, 068, 16, 1001, 1200, 0
+Sound09=1, 419, 043, 082, 10, 1001, 1200, 0
+Sound10=1, 428, 023, 070, 16, 1001, 1200, 0
+Sound11=1, 428, 041, 080, 10, 1001, 1200, 0
+Sound12=1, 429, 025, 072, 16, 1001, 1200, 0
+Sound13=1, 429, 037, 078, 10, 1001, 1200, 0
+Sound14=1, 430, 029, 074, 16, 1001, 1200, 0
+Sound15=1, 430, 031, 076, 10, 1001, 1200, 0
+
+; =======================================================================================
+[SoundRegion04]
+Name=medium night wind 1
+Color=0
+fade_on_mp3=0
+fade_time=5
+random_sound_spacing=5
+zone_wide_sounds=1
+sound_type=1
+
+; same sounds/periods/volumes as day wind 1
+; "medium" chance values; complement the spread of period values
+;   v16: 60%, step down by 2s, v1: 30%
+
+Sound00=1, 415, 011, 030, 06, 1931, 500, 0
+Sound01=1, 415, 061, 060, 02, 1931, 500, 0
+Sound02=1, 416, 013, 032, 06, 1931, 500, 0
+Sound03=1, 416, 059, 058, 02, 1931, 500, 0
+Sound04=1, 417, 015, 034, 06, 1931, 500, 0
+Sound05=1, 417, 053, 056, 02, 1931, 500, 0
+Sound06=1, 418, 017, 036, 06, 1931, 500, 0
+Sound07=1, 418, 047, 054, 02, 1931, 500, 0
+Sound08=1, 419, 019, 038, 06, 1931, 500, 0
+Sound09=1, 419, 043, 052, 02, 1931, 500, 0
+Sound10=1, 428, 023, 040, 06, 1931, 500, 0
+Sound11=1, 428, 041, 050, 02, 1931, 500, 0
+Sound12=1, 429, 025, 042, 06, 1931, 500, 0
+Sound13=1, 429, 037, 048, 02, 1931, 500, 0
+Sound14=1, 430, 029, 044, 06, 1931, 500, 0
+Sound15=1, 430, 031, 046, 02, 1931, 500, 0
+
+; =======================================================================================
+[SoundRegion05]
+Name=medium night wind 2
+Color=0
+fade_on_mp3=0
+fade_time=5
+random_sound_spacing=5
+zone_wide_sounds=1
+sound_type=1
+
+; same sounds/periods/chances as night wind 1
+; sound values distributed to increase variability
+
+Sound00=1, 430, 011, 030, 06, 1931, 500, 0
+Sound01=1, 430, 061, 060, 02, 1931, 500, 0
+Sound02=1, 429, 013, 032, 06, 1931, 500, 0
+Sound03=1, 429, 059, 058, 02, 1931, 500, 0
+Sound04=1, 428, 015, 034, 06, 1931, 500, 0
+Sound05=1, 428, 053, 056, 02, 1931, 500, 0
+Sound06=1, 419, 017, 036, 06, 1931, 500, 0
+Sound07=1, 419, 047, 054, 02, 1931, 500, 0
+Sound08=1, 418, 019, 038, 06, 1931, 500, 0
+Sound09=1, 418, 043, 052, 02, 1931, 500, 0
+Sound10=1, 417, 023, 040, 06, 1931, 500, 0
+Sound11=1, 417, 041, 050, 02, 1931, 500, 0
+Sound12=1, 416, 025, 042, 06, 1931, 500, 0
+Sound13=1, 416, 037, 048, 02, 1931, 500, 0
+Sound14=1, 415, 029, 044, 06, 1931, 500, 0
+Sound15=1, 415, 031, 046, 02, 1931, 500, 0
+
+; =======================================================================================
+[SoundRegion06]
+Name=medium night wind picks up
+Color=0
+fade_on_mp3=0
+fade_time=5
+random_sound_spacing=5
+zone_wide_sounds=1
+sound_type=1
+
+; same sounds/periods/chances as night wind 1
+; volumes greater than those of night wind 1 & 2
+
+Sound00=1, 415, 011, 030, 16, 2331, 100, 0
+Sound01=1, 415, 061, 060, 10, 2331, 100, 0
+Sound02=1, 416, 013, 032, 16, 2331, 100, 0
+Sound03=1, 416, 059, 058, 10, 2331, 100, 0
+Sound04=1, 417, 015, 034, 16, 2331, 100, 0
+Sound05=1, 417, 053, 056, 10, 2331, 100, 0
+Sound06=1, 418, 017, 036, 16, 2331, 100, 0
+Sound07=1, 418, 047, 054, 10, 2331, 100, 0
+Sound08=1, 419, 019, 038, 16, 2331, 100, 0
+Sound09=1, 419, 043, 052, 10, 2331, 100, 0
+Sound10=1, 428, 023, 040, 16, 2331, 100, 0
+Sound11=1, 428, 041, 050, 10, 2331, 100, 0
+Sound12=1, 429, 025, 042, 16, 2331, 100, 0
+Sound13=1, 429, 037, 048, 10, 2331, 100, 0
+Sound14=1, 430, 029, 044, 16, 2331, 100, 0
+Sound15=1, 430, 031, 046, 10, 2331, 100, 0
+
+; =======================================================================================
+[SoundRegion07]
+Name=rain
+Color=0
+fade_on_mp3=0
+fade_time=5
+random_sound_spacing=5
+zone_wide_sounds=1
+sound_type=3
+
+; period values selected to avoid sounds always being 'in step'
+;   11, 13, 15, 17, 19, 23, 25, 29, 31, 37, 41, 43
+; period/chance values distributed to increase variability
+;   v1, v12, v2, v11, v3, v10, v4, v9, v5, v8, v6, v7
+; chance values selected to complement the spread of period values
+;   p12: 80%, step down by 4s, v1: 36%
+
+Sound00=2, 439, 000, 100, 50, 0, 0, 2 ; RAIN LOOP 1, VOLUME 1
+Sound01=2, 440, 000, 050, 25, 0, 0, 2 ; RAIN LOOP 2, VOLUME 2
+Sound02=1, 443, 011, 036, 30, 0, 0, 2 ; RAINY WIND GUST 1, VOLUME 1
+Sound03=1, 443, 043, 080, 10, 0, 0, 2 ; RAINY WIND GUST 1, VOLUME 2
+Sound04=1, 444, 013, 040, 30, 0, 0, 2 ; RAINY WIND GUST 2, VOLUME 1
+Sound05=1, 444, 041, 076, 10, 0, 0, 2 ; RAINY WIND GUST 2, VOLUME 2
+Sound06=1, 447, 015, 044, 90, 0, 0, 2 ; THUNDER 1, VOLUME 1
+Sound07=1, 447, 037, 072, 30, 0, 0, 2 ; THUNDER 1, VOLUME 2
+Sound08=1, 448, 017, 048, 90, 0, 0, 2 ; THUNDER 2, VOLUME 1
+Sound09=1, 448, 031, 068, 30, 0, 0, 2 ; THUNDER 2, VOLUME 2
+Sound10=1, 449, 019, 052, 90, 0, 0, 2 ; THUNDER 3, VOLUME 1
+Sound11=1, 449, 029, 064, 30, 0, 0, 2 ; THUNDER 3, VOLUME 2
+Sound12=1, 450, 023, 056, 90, 0, 0, 2 ; THUNDER 4, VOLUME 1
+Sound13=1, 450, 025, 060, 30, 0, 0, 2 ; THUNDER 4, VOLUME 2
+
+; =======================================================================================
+[SoundRegion08]
+Name=medium day birds
+Color=0
+fade_on_mp3=1
+fade_time=5
+random_sound_spacing=5
+zone_wide_sounds=1
+sound_type=1
+
+; period values selected to avoid sounds always being 'in step'
+;   19, 23, 25, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79
+; period/chance values distributed to increase variability
+;   v1, v16, v2, v15, v3, v14, v4, v13, v5, v12, v6, v11, v7, v10, v8, v9
+; "medium" chance values; complement the spread of period values
+;   v16: 60%, step down by 1s, v1: 45%
+
+Sound00=1, 453, 019, 045, 04, 501, 1930, 1 ; DAY BIRD 1, VOLUME 1
+Sound01=1, 453, 079, 060, 02, 501, 1930, 1 ; DAY BIRD 1, VOLUME 2
+Sound02=1, 454, 023, 046, 04, 501, 1930, 1 ; DAY BIRD 2, VOLUME 1
+Sound03=1, 454, 073, 059, 02, 501, 1930, 1 ; DAY BIRD 2, VOLUME 2
+Sound04=1, 455, 025, 047, 04, 501, 1930, 1 ; DAY BIRD 3, VOLUME 1
+Sound05=1, 455, 071, 058, 02, 501, 1930, 1 ; DAY BIRD 3, VOLUME 2
+Sound06=1, 456, 029, 048, 04, 501, 1930, 1 ; DAY BIRD 4, VOLUME 1
+Sound07=1, 456, 067, 057, 02, 501, 1930, 1 ; DAY BIRD 4, VOLUME 2
+Sound08=1, 457, 031, 049, 04, 501, 1930, 1 ; DAY BIRD 5, VOLUME 1
+Sound09=1, 457, 061, 056, 02, 501, 1930, 1 ; DAY BIRD 5, VOLUME 2
+Sound10=1, 458, 037, 050, 04, 501, 1930, 1 ; DAY BIRD 6, VOLUME 1
+Sound11=1, 458, 059, 055, 02, 501, 1930, 1 ; DAY BIRD 6, VOLUME 2
+Sound12=1, 459, 041, 051, 04, 501, 1930, 1 ; DAY BIRD 7, VOLUME 1
+Sound13=1, 459, 053, 054, 02, 501, 1930, 1 ; DAY BIRD 7, VOLUME 2
+Sound14=1, 460, 043, 052, 04, 501, 1930, 1 ; DAY BIRD 8, VOLUME 1
+Sound15=1, 460, 047, 053, 02, 501, 1930, 1 ; DAY BIRD 8, VOLUME 2
+
+; =======================================================================================
+[SoundRegion09]
+Name=medium night birds
+Color=0
+fade_on_mp3=1
+fade_time=5
+random_sound_spacing=5
+zone_wide_sounds=1
+sound_type=1
+
+; same periods/volumes as day birds
+; "medium" chance values; complement the spread of period values
+;   v16: 45%, step down by 1s, v1: 30%
+
+Sound00=1, 453, 019, 030, 04, 1931, 500, 1 ; NIGHT BIRD 1, VOLUME 1
+Sound01=1, 453, 079, 045, 02, 1931, 500, 1 ; NIGHT BIRD 1, VOLUME 2
+Sound02=1, 454, 023, 031, 04, 1931, 500, 1 ; NIGHT BIRD 2, VOLUME 1
+Sound03=1, 454, 073, 044, 02, 1931, 500, 1 ; NIGHT BIRD 2, VOLUME 2
+Sound04=1, 455, 025, 032, 04, 1931, 500, 1 ; NIGHT BIRD 3, VOLUME 1
+Sound05=1, 455, 071, 043, 02, 1931, 500, 1 ; NIGHT BIRD 3, VOLUME 2
+Sound06=1, 456, 029, 033, 04, 1931, 500, 1 ; NIGHT BIRD 4, VOLUME 1
+Sound07=1, 456, 067, 042, 02, 1931, 500, 1 ; NIGHT BIRD 4, VOLUME 2
+Sound08=1, 475, 031, 034, 04, 1931, 500, 1 ; NIGHT BIRD 5 (OWL), VOLUME 1
+Sound09=1, 475, 061, 041, 02, 1931, 500, 1 ; NIGHT BIRD 5 (OWL), VOLUME 2
+Sound10=1, 476, 037, 035, 04, 1931, 500, 1 ; NIGHT BIRD 6 (OWL), VOLUME 1
+Sound11=1, 476, 059, 040, 02, 1931, 500, 1 ; NIGHT BIRD 6 (OWL), VOLUME 2
+Sound12=1, 477, 041, 036, 04, 1931, 500, 1 ; NIGHT BIRD 7 (OWL), VOLUME 1
+Sound13=1, 477, 053, 039, 02, 1931, 500, 1 ; NIGHT BIRD 7 (OWL), VOLUME 2
+Sound14=1, 478, 043, 037, 04, 1931, 500, 1 ; NIGHT BIRD 8 (OWL), VOLUME 1
+Sound15=1, 478, 047, 038, 02, 1931, 500, 1 ; NIGHT BIRD 8 (OWL), VOLUME 2
+
+; =======================================================================================
+[SoundRegion10]
+Name=heavy day animals / medium day insects
+Color=0
+fade_on_mp3=1
+fade_time=5
+random_sound_spacing=5
+zone_wide_sounds=1
+sound_type=1
+
+; period values selected to avoid sounds always being 'in step'
+;   19, 23, 25, 29, 31, 37, 41, 43, 47, 53, 59, 61
+; period/chance values distributed to increase variability
+;   v1, v12, v2, v11, v3, v10, v4, v9, v5, v8, v6, v7
+; "heavy/medium" chance values; complement the spread of period values
+;   v12: 40%, step down by 1s, v1: 29%; +10 for heavy
+
+Sound00=1, 479, 019, 039, 04, 501, 1930, 1 ; DAY ANIMAL 1, VOLUME 1
+Sound01=1, 479, 061, 050, 02, 501, 1930, 1 ; DAY ANIMAL 1, VOLUME 2
+Sound02=1, 480, 023, 040, 04, 501, 1930, 1 ; DAY ANIMAL 2, VOLUME 1
+Sound03=1, 480, 059, 049, 02, 501, 1930, 1 ; DAY ANIMAL 2, VOLUME 2
+Sound04=1, 481, 025, 041, 04, 501, 1930, 1 ; DAY ANIMAL 3, VOLUME 1
+Sound05=1, 481, 053, 048, 02, 501, 1930, 1 ; DAY ANIMAL 3, VOLUME 2
+Sound06=1, 482, 029, 042, 04, 501, 1930, 1 ; DAY ANIMAL 4, VOLUME 1
+Sound07=1, 482, 047, 047, 02, 501, 1930, 1 ; DAY ANIMAL 4, VOLUME 2
+Sound08=1, 492, 031, 033, 04, 501, 1930, 0 ; DAY INSECT 1, VOLUME 1
+Sound09=1, 492, 043, 036, 02, 501, 1930, 0 ; DAY INSECT 1, VOLUME 2
+Sound10=1, 493, 037, 034, 04, 501, 1930, 0 ; DAY INSECT 2, VOLUME 1
+Sound11=1, 493, 041, 035, 02, 501, 1930, 0 ; DAY INSECT 2, VOLUME 2
+
+; =======================================================================================
+[SoundRegion11]
+Name=heavy night animals / medium night insects
+Color=0
+fade_on_mp3=1
+fade_time=5
+random_sound_spacing=5
+zone_wide_sounds=1
+sound_type=1
+
+; same periods/volumes as day animals / insects
+; "heavy/medium" chance values; complement the spread of period values
+;   v12: 29%, step down by 1s, v1: 18%; +10 for heavy
+
+Sound00=1, 479, 019, 028, 04, 501, 1930, 1 ; NIGHT ANIMAL 1, VOLUME 1
+Sound01=1, 479, 061, 039, 02, 501, 1930, 1 ; NIGHT ANIMAL 1, VOLUME 2
+Sound02=1, 480, 023, 029, 04, 501, 1930, 1 ; NIGHT ANIMAL 2, VOLUME 1
+Sound03=1, 480, 059, 038, 02, 501, 1930, 1 ; NIGHT ANIMAL 2, VOLUME 2
+Sound04=1, 481, 025, 030, 04, 501, 1930, 1 ; NIGHT ANIMAL 3, VOLUME 1
+Sound05=1, 481, 053, 037, 02, 501, 1930, 1 ; NIGHT ANIMAL 3, VOLUME 2
+Sound06=1, 482, 029, 031, 04, 501, 1930, 1 ; NIGHT ANIMAL 4, VOLUME 1
+Sound07=1, 482, 047, 036, 02, 501, 1930, 1 ; NIGHT ANIMAL 4, VOLUME 2
+Sound08=1, 492, 031, 022, 04, 501, 1930, 0 ; NIGHT INSECT 1, VOLUME 1
+Sound09=1, 492, 043, 025, 02, 501, 1930, 0 ; NIGHT INSECT 1, VOLUME 2
+Sound10=1, 493, 037, 023, 04, 501, 1930, 0 ; NIGHT INSECT 2, VOLUME 1
+Sound11=1, 493, 041, 024, 02, 501, 1930, 0 ; NIGHT INSECT 2, VOLUME 2
+Sound12=2, 501, 000, 100, 40, 1931, 500, 0 ; NIGHT INSECT MAIN LOOP, VOLUME 1
+Sound13=2, 502, 000, 050, 20, 1931, 500, 0 ; NIGHT INSECT EXTRA LOOP, VOLUME 1
+
+; =============================================================================
+; SOUNDS.DAT:	ZONE 105 LAKES
+; UPDATED:		11-27-2002
+; =============================================================================
+[SoundRegion12]
+Name=lakes
+Color=0
+fade_on_mp3=0
+fade_time=5
+random_sound_spacing=5
+zone_wide_sounds=0
+sound_type=3
+
+Sound00=2, 176, 0, 100, 100, 0, 0, 0 ; LAKE
+
+Shape00=1, 19968, 13568, 2752
+Shape01=1, 22784, 14080, 2816
+Shape02=1, 31744, 17920, 6272
+Shape03=1, 26880, 14592, 3328
+Shape04=1, 34048, 16384, 4800
+Shape05=1, 33024, 25088, 5440
+Shape06=1, 38400, 31488, 4992
+Shape07=1, 34304, 29696, 3520
+Shape08=1, 43264, 28672, 3136
+Shape09=1, 46848, 30208, 3008
+Shape10=1, 49920, 33280, 4032
+Shape11=1, 42816, 39616, 4608
+Shape12=1, 40192, 36352, 3392
+Shape13=1, 46976, 36736, 3072
+Shape14=1, 44800, 43776, 3776
+Shape15=1, 47360, 46336, 3072
+Shape16=1, 51072, 47296, 3008
+Shape17=1, 13568, 34816, 7040
+Shape18=1, 7168, 36608, 5632
+Shape19=1, 20224, 38912, 4288
+Shape20=1, 12288, 43072, 2112
+Shape21=1, 19072, 44032, 1600
+Shape22=1, 15168, 51520, 7232
+Shape23=1, 9216, 47872, 2688
+Shape24=1, 6912, 46080, 1216
+Shape25=1, 19456, 51712, 4672
+Shape26=1, 13056, 59904, 2816
+Shape27=1, 15360, 61440, 1600
+Shape28=1, 19200, 58112, 3008
+Shape29=1, 22016, 58624, 3008
+Shape30=1, 24320, 59136, 2048
+
+; !!! DON'T BOTHER XSHAPE-ING SURROUNDING ANIMALS UNTIL ENTIRE SOUNDS.DAT IS .BAT FILE GENERATED !!!                
+; ==============================================================================                                    
+; TERRAIN FEATURE : VILLAGE - MEDIUM (TYPICAL RADIUS = 3000; XSHAPE SURROUNDING ANIMALS, ADD/REMOVE AMBIENCES?)     
+; ALTERNATE SHAPE FILES FOR AMBIENCES THAT DON'T APPLY TO ALL VILLAGES OF GIVEN SIZE IN GIVEN ZONE                  
+; ==============================================================================                                    
+[SoundRegion30]                                                                                                     
+; UPDATED 03-10-2005
+Name=AMBIENCE : DOGS - DISTANT - LIGHT
+Color=0
+sound_type=1
+version=1
+random_sound_spacing=5
+ignore_random_offset=0
+fade_on_mp3=1
+fade_on_mp3_time=3
+fade_time=7
+fade_on_weather_time=6
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; DAY
+Sound00=1, 0534, 033, 021, 40, 0501, 1930, 1 ; BARK 1
+Sound01=1, 0535, 043, 028, 40, 0501, 1930, 1 ; BARK 2
+Sound02=1, 0536, 053, 035, 40, 0501, 1930, 1 ; BARK 3
+Sound03=1, 0537, 063, 042, 40, 0501, 1930, 1 ; BARK 4
+; NIGHT (MORE SPARSE)
+Sound04=1, 0534, 033, 011, 40, 1931, 0500, 1 ; BARK 1
+Sound05=1, 0535, 043, 018, 40, 1931, 0500, 1 ; BARK 2
+Sound06=1, 0536, 053, 025, 40, 1931, 0500, 1 ; BARK 3
+Sound07=1, 0537, 063, 032, 40, 1931, 0500, 1 ; BARK 4
+
+; UPDATED 2004-03-26
+Shape00=1, 35052, 37452, 3000 ; GNA FASTE
+Shape01=1, 43583, 25075, 3000 ; GALPLEN
+
+; ==============================================================================                                    
+[SoundRegion31]                                                                                                     
+; UPDATED 03-10-2005
+Name=AMBIENCE : DOGS - NEARBY - HEAVY
+Color=0
+sound_type=1
+version=1
+random_sound_spacing=5
+ignore_random_offset=0
+fade_on_mp3=1
+fade_on_mp3_time=3
+fade_time=7
+fade_on_weather_time=6
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; DAY
+Sound00=1, 1171, 031, 045, 50, 0501, 1930, 1 ; BARK 1
+Sound01=1, 1172, 041, 060, 50, 0501, 1930, 1 ; BARK 2
+Sound02=1, 1173, 051, 075, 50, 0501, 1930, 1 ; BARK 3
+Sound03=1, 1174, 061, 090, 50, 0501, 1930, 1 ; BARK 4
+; NIGHT (MORE SPARSE)
+Sound04=1, 1171, 031, 035, 50, 1931, 0500, 1 ; BARK 1
+Sound05=1, 1172, 041, 050, 50, 1931, 0500, 1 ; BARK 2
+Sound06=1, 1173, 051, 065, 50, 1931, 0500, 1 ; BARK 3
+Sound07=1, 1174, 061, 080, 50, 1931, 0500, 1 ; BARK 4
+
+; UPDATED 2004-03-26
+Shape00=1, 35052, 37452, 3000 ; GNA FASTE
+Shape01=1, 43583, 25075, 3000 ; GALPLEN
+
+; ==============================================================================                                    
+[SoundRegion32]                                                                                                     
+; UPDATED 03-10-2005
+Name=AMBIENCE : HORSES - DISTANT - LIGHT
+Color=0
+sound_type=1
+version=1
+random_sound_spacing=5
+ignore_random_offset=0
+fade_on_mp3=1
+fade_on_mp3_time=3
+fade_time=7
+fade_on_weather_time=6
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; DAY
+Sound00=1, 0530, 029, 021, 50, 0501, 1930, 1 ; WHINNY 1
+Sound01=1, 0531, 039, 028, 50, 0501, 1930, 1 ; WHINNY 2
+Sound02=1, 0532, 049, 035, 50, 0501, 1930, 1 ; WHINNY 3
+Sound03=1, 0533, 059, 042, 50, 0501, 1930, 1 ; WHINNY 4
+; NIGHT (MORE SPARSE)
+Sound04=1, 0530, 029, 011, 50, 1931, 0500, 1 ; WHINNY 1
+Sound05=1, 0531, 039, 018, 50, 1931, 0500, 1 ; WHINNY 2
+Sound06=1, 0532, 049, 025, 50, 1931, 0500, 1 ; WHINNY 3
+Sound07=1, 0533, 059, 032, 50, 1931, 0500, 1 ; WHINNY 4
+
+; UPDATED 2004-03-26
+Shape00=1, 35052, 37452, 3000 ; GNA FASTE
+Shape01=1, 43583, 25075, 3000 ; GALPLEN
+
+; ==============================================================================                                    
+[SoundRegion33]                                                                                                     
+; UPDATED 03-10-2005
+Name=AMBIENCE : HORSES - NEARBY - HEAVY
+Color=0
+sound_type=1
+version=1
+random_sound_spacing=5
+ignore_random_offset=0
+fade_on_mp3=1
+fade_on_mp3_time=3
+fade_time=7
+fade_on_weather_time=6
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; DAY
+Sound00=1, 1177, 027, 045, 70, 0501, 1930, 1 ; VOCALIZATION 1
+Sound01=1, 1178, 037, 060, 70, 0501, 1930, 1 ; VOCALIZATION 2
+Sound02=1, 1179, 047, 075, 70, 0501, 1930, 1 ; VOCALIZATION 3
+Sound03=1, 1180, 057, 090, 70, 0501, 1930, 1 ; VOCALIZATION 4
+; NIGHT (MORE SPARSE)
+Sound04=1, 1177, 027, 045, 70, 1931, 0500, 1 ; VOCALIZATION 1
+Sound05=1, 1178, 037, 060, 70, 1931, 0500, 1 ; VOCALIZATION 2
+Sound06=1, 1179, 047, 075, 70, 1931, 0500, 1 ; VOCALIZATION 3
+Sound07=1, 1180, 057, 090, 70, 1931, 0500, 1 ; VOCALIZATION 4
+
+; UPDATED 2004-03-26
+Shape00=1, 35052, 37452, 3000 ; GNA FASTE
+Shape01=1, 43583, 25075, 3000 ; GALPLEN
+
+; ==============================================================================                                    
+[SoundRegion34]                                                                                                     
+; UPDATED 03-10-2005
+Name=AMBIENCE : TRADES - DISTANT - LIGHT
+Color=0
+sound_type=1
+version=1
+random_sound_spacing=5
+ignore_random_offset=0
+fade_on_mp3=1
+fade_on_mp3_time=3
+fade_time=7
+fade_on_weather_time=6
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; DAY
+Sound00=1, 0558, 011, 021, 40, 0901, 1630, 1 ; WOODEN HAMMERING 1
+Sound01=1, 0559, 015, 028, 40, 0901, 1630, 1 ; WOODEN HAMMERING 2
+Sound02=1, 0560, 017, 035, 40, 0901, 1630, 1 ; WOOD CHISELING 1
+Sound03=1, 0561, 021, 042, 40, 0901, 1630, 1 ; WOOD CHISELING 2
+Sound04=1, 0562, 013, 021, 40, 0901, 1630, 1 ; ANVIL 1
+Sound05=1, 0563, 017, 028, 40, 0901, 1630, 1 ; ANVIL 2
+Sound06=1, 0564, 021, 035, 40, 0901, 1630, 1 ; ANVIL 3
+Sound07=1, 0565, 025, 042, 40, 0901, 1630, 1 ; ANVIL 4
+Sound08=1, 0566, 015, 021, 40, 0901, 1630, 1 ; SAWING 1
+Sound09=1, 0567, 021, 028, 40, 0901, 1630, 1 ; SAWING 2
+Sound10=1, 0568, 025, 035, 40, 0901, 1630, 1 ; STONE CHISELING 1
+Sound11=1, 0569, 029, 042, 40, 0901, 1630, 1 ; STONE CHISELING 2
+Sound12=1, 0570, 017, 021, 40, 0901, 1630, 1 ; AXE CHOP 1
+Sound13=1, 0571, 023, 028, 40, 0901, 1630, 1 ; AXE CHOP 2
+Sound14=1, 0572, 029, 035, 40, 0901, 1630, 1 ; AXE CHOP 3
+Sound15=1, 0573, 035, 042, 40, 0901, 1630, 1 ; AXE CHOP 4
+
+; UPDATED 2004-03-26
+Shape00=1, 35052, 37452, 3000 ; GNA FASTE
+Shape01=1, 43583, 25075, 3000 ; GALPLEN
+
+; ==============================================================================                                    
+[SoundRegion35]                                                                                                     
+; UPDATED 03-10-2005
+Name=AMBIENCE : TRADES - NEARBY - HEAVY
+Color=0
+sound_type=1
+version=1
+random_sound_spacing=5
+ignore_random_offset=0
+fade_on_mp3=1
+fade_on_mp3_time=3
+fade_time=7
+fade_on_weather_time=6
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; DAY
+Sound00=1, 1149, 011, 045, 60, 0901, 1630, 1 ; WOODEN HAMMERING 1
+Sound01=1, 1150, 015, 060, 60, 0901, 1630, 1 ; WOODEN HAMMERING 2
+Sound02=1, 1151, 017, 075, 60, 0901, 1630, 1 ; WOODEN CHISELING 1
+Sound03=1, 1152, 021, 090, 60, 0901, 1630, 1 ; WOODEN CHISELING 2
+Sound04=1, 1041, 013, 045, 60, 0901, 1630, 1 ; ANVIL 1
+Sound05=1, 1042, 017, 060, 60, 0901, 1630, 1 ; ANVIL 2
+Sound06=1, 1043, 021, 075, 60, 0901, 1630, 1 ; STONE CHISELING 1
+Sound07=1, 1044, 025, 090, 60, 0901, 1630, 1 ; STONE CHISELING 2
+Sound08=1, 1045, 015, 045, 60, 0901, 1630, 1 ; AXE CHOP 1
+Sound09=1, 1046, 021, 060, 60, 0901, 1630, 1 ; AXE CHOP 2
+Sound10=1, 1047, 025, 075, 60, 0901, 1630, 1 ; AXE CHOP 3
+Sound11=1, 1048, 029, 090, 60, 0901, 1630, 1 ; AXE CHOP 4
+
+; UPDATED 2004-03-26
+Shape00=1, 35052, 37452, 3000 ; GNA FASTE
+Shape01=1, 43583, 25075, 3000 ; GALPLEN
+
+; ==============================================================================                                    
+[SoundRegion36]                                                                                                     
+; UPDATED 03-10-2005
+Name=AMBIENCE : VOICES - DISTANT - LIGHT
+Color=0
+sound_type=1
+version=1
+random_sound_spacing=5
+ignore_random_offset=0
+fade_on_mp3=1
+fade_on_mp3_time=3
+fade_time=7
+fade_on_weather_time=6
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; DAY
+Sound00=1, 0542, 029, 021, 40, 0501, 1930, 1 ; WALLA 1
+Sound01=1, 0543, 031, 028, 40, 0501, 1930, 1 ; WALLA 2
+Sound02=1, 0544, 033, 035, 40, 0501, 1930, 1 ; WALLA 3
+Sound03=1, 0545, 035, 042, 40, 0501, 1930, 1 ; WALLA 4
+Sound04=1, 0546, 037, 021, 40, 0501, 1930, 1 ; WALLA 5
+Sound05=1, 0547, 039, 028, 40, 0501, 1930, 1 ; WALLA 6
+Sound06=1, 0548, 041, 035, 40, 0501, 1930, 1 ; WALLA 7
+Sound07=1, 0549, 043, 042, 40, 0501, 1930, 1 ; WALLA 8
+Sound08=1, 0550, 045, 021, 40, 0501, 1930, 1 ; WALLA 9
+Sound09=1, 0551, 047, 028, 40, 0501, 1930, 1 ; WALLA 10
+Sound10=1, 0552, 049, 035, 40, 0501, 1930, 1 ; WALLA 11
+Sound11=1, 0553, 051, 042, 40, 0501, 1930, 1 ; WALLA 12
+Sound12=1, 0554, 053, 021, 40, 0501, 1930, 1 ; WALLA 13
+Sound13=1, 0555, 055, 028, 40, 0501, 1930, 1 ; WALLA 14
+Sound14=1, 0556, 057, 035, 40, 0501, 1930, 1 ; WALLA 15
+Sound15=1, 0557, 059, 042, 40, 0501, 1930, 1 ; WALLA 16
+
+; UPDATED 2004-03-26
+Shape00=1, 35052, 37452, 3000 ; GNA FASTE
+Shape01=1, 43583, 25075, 3000 ; GALPLEN
+
+; ==============================================================================                                    
+[SoundRegion37]                                                                                                     
+; UPDATED 08-25-2005
+NAME=AMBIENTLOOP : MARKET - QUIET
+Color=0
+sound_type=1
+version=1
+random_sound_spacing=5
+ignore_random_offset=0
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=7
+fade_on_weather_time=10
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+Sound00=2, 0032, 000, 100, 40, 0, 0, 1 ; CROWD LOOP
+
+; UPDATED 2004-03-26
+Shape00=1, 35052, 37452, 3000 ; GNA FASTE
+Shape01=1, 43583, 25075, 3000 ; GALPLEN
+
+; ==============================================================================                                    
+; OBJECT : FIRE - HISS (TYPICAL RADIUS = 0200; EMBERS, SPITS)                                                       
+; ==============================================================================                                    
+[SoundRegion38]                                                                                                     
+; UPDATED 08-25-2005
+Name=OBJECT : FIRE - HISS
+Color=0
+sound_type=3
+version=1
+random_sound_spacing=5
+ignore_random_offset=0
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=3
+fade_on_weather_time=0
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+Sound00=2, 0037, 000, 100, 48, 0, 0, 0 ; HISSING COALS LOOP
+
+; UPDATED 03-26-2004
+Shape00=1, 33550, 36611, 0200 ; FORGE COALS IN GNA FASTE
+
+; ==============================================================================                                    
+; OBJECT : FIRE - MEDIUM (TYPICAL RADIUS = 0500; FLAMING TORCHES, SUBDUED BRAZIERS)                                 
+; ==============================================================================                                    
+[SoundRegion39]                                                                                                     
+; UPDATED 03-07-2005
+Name=OBJECT : FIRE - MEDIUM
+Color=0
+sound_type=3
+version=1
+random_sound_spacing=5
+ignore_random_offset=0
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=3
+fade_on_weather_time=0
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+Sound00=2, 1461, 000, 100, 60, 0, 0, 0 ; MEDIUM FIRE LOOP
+
+; UPDATED 03-04-2005
+Shape00=1, 43653, 25089, 0500 ; N-TRFORT1.NIF - TROLL FORT FIRE IN GALPLEN
+Shape01=1, 61440, 56576, 0500 ; LOGFIRE.NIF or CAMPFIRE.NIF
+
+; ==============================================================
+; AMBIENT MUSIC : DAY : LT03 : 08-01-2005
+; ==============================================================
+[SoundRegion49]
+sound_type=2
+version=1
+random_sound_spacing=5
+ignore_random_offset=0
+fade_on_mp3=1
+fade_on_mp3_time=1
+fade_time=5
+fade_on_weather_time=6
+fade_on_underwater_time=6
+zone_wide_sounds=1
+
+Sound00=1, 668, 12, 75, 99, 531, 1900, 1
+Sound01=1, 669, 11, 75, 99, 531, 1900, 1
+Sound02=1, 670, 10, 75, 99, 531, 1900, 1
+Sound03=1, 671, 09, 75, 99, 531, 1900, 1
+Sound04=1, 660, 09, 75, 99, 501, 1930, 1
+Sound05=1, 661, 08, 75, 99, 501, 1930, 1
+Sound06=1, 664, 08, 75, 99, 501, 1930, 1
+Sound07=1, 665, 07, 75, 99, 501, 1930, 1
+Sound08=1, 666, 06, 75, 99, 501, 1930, 1
+Sound09=1, 667, 05, 75, 99, 501, 1930, 1
+Sound10=1, 662, 17, 75, 99, 501, 1930, 1
+Sound11=1, 663, 16, 75, 99, 501, 1930, 1
+
+; ==============================================================
+; AMBIENT MUSIC : NIGHT : MY06 : 08-01-2005
+; ==============================================================
+[SoundRegion54]
+sound_type=2
+version=1
+random_sound_spacing=5
+ignore_random_offset=0
+fade_on_mp3=1
+fade_on_mp3_time=1
+fade_time=5
+fade_on_weather_time=6
+fade_on_underwater_time=6
+zone_wide_sounds=1
+
+Sound00=1, 773, 14, 75, 99, 2001, 430, 1
+Sound01=1, 774, 13, 75, 99, 2001, 430, 1
+Sound02=1, 775, 12, 75, 99, 2001, 430, 1
+Sound03=1, 769, 17, 75, 99, 1931, 500, 1
+Sound04=1, 770, 16, 75, 99, 1931, 500, 1
+Sound05=1, 771, 15, 75, 99, 1931, 500, 1
+Sound06=1, 772, 14, 75, 99, 1931, 500, 1
+Sound07=1, 765, 13, 75, 99, 1931, 500, 1
+Sound08=1, 766, 12, 75, 99, 1931, 500, 1
+Sound09=1, 767, 11, 75, 99, 1931, 500, 1
+Sound10=1, 768, 10, 75, 99, 1931, 500, 1
+

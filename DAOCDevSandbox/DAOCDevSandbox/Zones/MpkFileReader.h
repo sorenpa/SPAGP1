@@ -34,9 +34,9 @@ public:
 private:
 	int _lastStage;
 	int _offset;
-	std::vector<char> _packetBuffer;
+	//std::vector<char> _packetBuffer;
 	std::vector<char> _filenamesBuffer;
-	std::vector<char> _fileDataBuffer;
+	//std::vector<char> _fileDataBuffer;
 	std::string _mpkName = "";
 	std::vector<std::string> _fileNames;
 	std::map<std::string, std::vector<char>> _fileData;

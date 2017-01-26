@@ -190,7 +190,15 @@ void MpkFileReader::Upload (int stage, char *data, int len) {
 	{
 		case 0:
 		{
-			_mpkName.append(data);
+			char *mpkName = new char[len+1];
+			int i = 0;
+			for (; i < len; i++)
+			{
+				mpkName[i] = data[i];
+			}
+			mpkName[i] = '\0';
+
+			_mpkName.append(mpkName);
 			break;
 		}
 		case 1: //Process filenames

@@ -19,6 +19,19 @@ int ZoneDataExtractor::GenerateHeightMap(std::string outputPath)
 	std::map<std::string, std::vector<char>> archiveData;
 
 	//A: Extract the relevant data_something.mpk file (using MpkFileReader)
+	std::map<Zones_e, std::string>::iterator it = zoneIdMap.find(_zone);
+	if (it == zoneIdMap.end())
+	{
+		std::cerr << "[ZoneDataExtractor]Error, could not find the zone " << _zone;
+		return 1;
+	}
+
+	std::string zoneDir = zoneBasePath + "Zone" + it->second + "\\";
+	std::string datMpkFileName = "dat" + it->second + ".mpk";
+	const char * c = zoneDir.append(datMpkFileName).c_str();
+	MpkFileReader mpkReader = MpkFileReader();
+	mpkReader.Decompress(c);
+
 	//B: Read the data file (prop a helper func)
 	//C: Read the relevant .pcx image files and add them (prop a helper func using PcxReader)
 	//D: Write the Png to disk (using WritePng)

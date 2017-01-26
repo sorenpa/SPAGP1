@@ -3,8 +3,8 @@
 
 #include "stdafx.h"
 #include "Networking\BaseClient.h"
-#include "Zones\MpkFileReader.h"
-#include "Zones\PcxReader.h"
+#include "Zones\ZoneDataExtractor.h"
+
 
 int main()
 {
@@ -49,7 +49,9 @@ int main()
 	/**************************************************************
 	* ZoneDataExtractor
 	**************************************************************/
-
+	ZoneDataExtractor extractor = ZoneDataExtractor();
+	extractor.SetZone(Zone000);
+	extractor.GenerateHeightMap("C:\\temp\\hMap_test.png");
     return 0;
 }
 
