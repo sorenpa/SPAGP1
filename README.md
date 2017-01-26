@@ -9,4 +9,4 @@ use:
 - UE4 for handling the client graphics (www.unrealengine.com)
 - Dawn of Light open source DAoC server emulator (http://www.dolserver.net/)
 
-This repository will not contain any code from these external parts fo my project. 
+This repository will not contain any code from these external parts.
