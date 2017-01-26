@@ -4,7 +4,7 @@
 #include "stdafx.h"
 #include "Networking\BaseClient.h"
 #include "Zones\MpkFileReader.h"
-#include "Zones\PcxConverter.h"
+#include "Zones\PcxReader.h"
 
 int main()
 {
@@ -22,29 +22,34 @@ int main()
 	//}
 
 	//BaseClient * client = new BaseClient();
-	//if (client->connect("127.0.0.1", "10300") == 0)
+	//if (client->Connect("127.0.0.1", "10300") == 0)
 	//{
 	//	char * test = "This is a test";
-	//	client->send(test, (int)strlen(test));
+	//	client->Send(test, (int)strlen(test));
 	//}
 
 	/**************************************************************
 	* Loading of mpak data
 	**************************************************************/
-	MpkFileReader *reader = new MpkFileReader();
+	//MpkFileReader *reader = new MpkFileReader();
 
-	//reader->init("C:\\projects\\SPAGP1\\DAOCDevSandbox\\DAOCDevSandbox\\Zones\\Resources\\dat105.mpk");
-	//reader->init("C:\\Projects\\Gaming\\DAOC\\SPAGP1\\DAOCDevSandbox\\DAOCDevSandbox\\Zones\\Resources\\dat105.mpk");
-	//reader->extract("C:\\temp\\", "offset.pcx");
+	//reader->Decompress("C:\\projects\\SPAGP1\\DAOCDevSandbox\\DAOCDevSandbox\\Zones\\Resources\\dat105.mpk");
+	//reader->Decompress("C:\\Projects\\Gaming\\DAOC\\SPAGP1\\DAOCDevSandbox\\DAOCDevSandbox\\Zones\\Resources\\dat105.mpk");
+	//reader->Extract("C:\\temp\\", "offset.pcx");
 	//C:\Projects\Gaming\DAOC\SPAGP1\DAOCDevSandbox\DAOCDevSandbox\Zones\Resources
 
 	/**************************************************************
 	* Read .pcx data
 	**************************************************************/
-	PcxConverter *conver = new PcxConverter();
+	//PcxReader *conver = new PcxReader();
 
-	char data;
-	conver->readPCX("C:\\temp\\offset.pcx", &data);
+	//std::vector<unsigned char> data;
+	//conver->readPCX("C:\\temp\\offset.pcx", &data);
+
+	/**************************************************************
+	* ZoneDataExtractor
+	**************************************************************/
+
     return 0;
 }
 

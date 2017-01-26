@@ -1,16 +1,62 @@
 #include "../stdafx.h"
 #include "MpkFileReader.h"
 
+/*
+====================
+MpkFileReader
+
+	Constructor
+====================
+*/
 MpkFileReader::MpkFileReader() 
 {
 	_lastStage = -1;
 }
 
+/*
+====================
+~MpkFileReader
+
+Destructor
+====================
+*/
 MpkFileReader::~MpkFileReader()
 {
 }
 
-bool MpkFileReader::init(const char* file) {
+/*
+=====================================================================
+GetArchiveData
+
+Getter for the data in the decompressed archive
+=====================================================================
+*/
+std::map<std::string, std::vector<char>> MpkFileReader::GetArchiveData()
+{
+	return _fileData;
+}
+
+/*
+=====================================================================
+GetArchiveData
+
+Getter for the data in the decompressed archive
+=====================================================================
+*/
+std::string MpkFileReader::GetArchiveName()
+{
+	return _mpkName;
+}
+
+/*
+=====================================================================
+Decompress
+
+	Decompresses the .mpk file specified by 'file'. The results are
+	stored in the private field _fileData.
+=====================================================================
+*/
+bool MpkFileReader::Decompress(const char* file) {
 	_offset = 0;
 
 	int inlen = 0;
@@ -62,7 +108,7 @@ bool MpkFileReader::init(const char* file) {
 
 		/* if we have some decompressed data, process it */
         if ((char*)stream.next_out > outbuf)
-			upload(stage, outbuf, (char*)stream.next_out - outbuf);
+			Upload(stage, outbuf, (char*)stream.next_out - outbuf);
 
 		/* if zlib consumed some data, rearrange our buffers */
 		if ((char*)stream.next_in > inbuf) {
@@ -83,7 +129,15 @@ bool MpkFileReader::init(const char* file) {
 	return true;
 }
 
-bool MpkFileReader::extract(char* path, char* filename) {
+/*
+=====================================================================
+Decompress
+
+	Extracts the archived file specified by 'filename', and extracts
+	it to the location spcified by 'path'
+=====================================================================
+*/
+bool MpkFileReader::Extract(char* path, char* filename) {
 	
 	DWORD dwAttrib = GetFileAttributesA(path);
 
@@ -123,8 +177,14 @@ bool MpkFileReader::extract(char* path, char* filename) {
 	return true;
 }
 
+/*
+=====================================================================
+Upload
 
-void MpkFileReader::upload (int stage, char *data, int len) {
+	'Uploads' a decompressed data block to the relevant data objects
+=====================================================================
+*/
+void MpkFileReader::Upload (int stage, char *data, int len) {
 
 	switch (stage)
 	{
@@ -177,3 +237,5 @@ void MpkFileReader::upload (int stage, char *data, int len) {
 
 	_lastStage = stage;
 }
+
+
