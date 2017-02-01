@@ -14,6 +14,7 @@ data from the original DAOC client.
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
 struct PcxHeader
 {
@@ -41,6 +42,9 @@ class PcxReader
 {
 public:
 	int readPCX(const char* file, std::vector<unsigned char> *data);
+	int readPCX(std::vector<char> *data, std::vector<char> *image);
+	short _width;
+	short _height;
 private:
 	PcxHeader _header;
 	char* _imgData;

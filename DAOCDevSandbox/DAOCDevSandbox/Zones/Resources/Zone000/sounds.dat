@@ -1,0 +1,395 @@
+; ZONE 000
+[SoundRegion00];--------------------------------------------------------------------------------------------------[terrain:prairie:weather]
+sound_type=1
+version=1
+random_sound_spacing=1
+ignore_random_offset=0
+instant_start=1
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=10
+fade_on_weather_time=5
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; SOUNDS 
+Sound00=2, s_Bed_Prairie, 0, 100, 24, 0, 0, 0 
+Sound01=1, g_Wind_Prairie, 2-6, 100, 64, 0431, 0530, 1 
+Sound02=1, g_Wind_Prairie, 5-15, 100, 48, 0531, 1900, 1 
+Sound03=1, g_Wind_Prairie, 2-6, 100, 64, 1901, 2000, 1 
+Sound04=1, g_Wind_Prairie, 5-15, 100, 48, 2001, 0430, 1 
+Sound05=2, s_Bed_RainPrairie, 0, 100, 48, 0, 0, 2 
+Sound06=1, g_Wind_Rain, 2-6, 100, 96, 0, 0, 2 
+Sound07=1, g_Thunder, 5-15, 100, 96, 0, 0, 2 
+Sound08=2, s_Bed_Fog, 0, 100, 64, 0, 0, 3 
+Sound09=1, g_Wind_Arctic, 2-6, 100, 80, 0, 0, 3 
+; SHAPES 
+Shape00=0, 0, 0, 65535, 65535
+
+[SoundRegion01];--------------------------------------------------------------------------------------------------[terrain:prairie:animals]
+sound_type=1
+version=1
+random_sound_spacing=1
+ignore_random_offset=0
+instant_start=1
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=10
+fade_on_weather_time=5
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; SOUNDS 
+Sound00=1, g_Animal_PrairieDay, 15-45, 100, 40, 0501, 1930, 1 
+Sound01=1, g_Animal_PrairieNight, 30-90, 100, 40, 1931, 0500, 1 
+; SHAPES 
+Shape00=0, 0, 0, 65535, 65535
+
+; XSHAPES
+xShape00=1, 11109, 28797, 4000 ; COTSWOLD VILLAGE
+xShape01=1, 25333, 47379, 2000 ; PRYDWEN KEEP
+xShape02=1, 17487, 45162, 1500 ; prydwen ossuary
+
+[SoundRegion02];------------------------------------------------------------------------------------------------[terrain:prairie:birdsbugs]
+sound_type=1
+version=1
+random_sound_spacing=1
+ignore_random_offset=0
+instant_start=1
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=30
+fade_on_weather_time=5
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; SOUNDS 
+Sound00=1, g_Bird_PrairieDay, 20-60, 100, 40, 0501, 1930, 1 
+Sound01=1, g_Bird_PrairieNight, 40-120, 100, 40, 1931, 0500, 1 
+Sound02=1, g_Insect_Prairie, 20-60, 100, 40, 0, 0, 1 
+Sound03=2, s_Insect_Loop_02, 0, 100, 32, 1931, 0500, 1 
+; SHAPES 
+Shape00=0, 0, 0, 65535, 65535
+
+; XSHAPES
+xShape00=1, 17487, 45162, 1500 ; prydwen ossuary
+
+[SoundRegion03];---------------------------------------------------------------------------------------------------------[feature:cemetary]
+sound_type=1
+version=2
+random_sound_spacing=1
+ignore_random_offset=0
+instant_start=1
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=8
+fade_on_weather_time=5
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; SOUNDS 
+Sound00=2, s_MusicComponent_CC12-01, 0, 100, 127, 0, 0, 0, 1 
+; SHAPES 
+Shape00=1, 17487, 45162, 1500 ; prydwen ossuary
+
+[SoundRegion04];-------------------------------------------------------------------------------------------------------------[feature:lake]
+sound_type=1
+version=2
+random_sound_spacing=1
+ignore_random_offset=0
+instant_start=1
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=8
+fade_on_weather_time=5
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; SOUNDS 
+Sound00=2, s_Lake_Loop, 0, 100, 32, 0, 0, 0, 1 
+Sound01=1, g_Wave_Lake, 3-9, 100, 32, 0, 0, 0, 1 
+Sound02=2, s_Bed_Underwater, 0, 100, 96, 0, 0, 0, 2 
+; SHAPES 
+Shape00=1, 25088, 15872, 1536
+
+[SoundRegion05];------------------------------------------------------------------------------------------------------------[feature:river]
+sound_type=1
+version=2
+random_sound_spacing=1
+ignore_random_offset=0
+instant_start=1
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=8
+fade_on_weather_time=5
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; SOUNDS 
+Sound00=2, s_River_Loop, 0, 100, 40, 0, 0, 0, 1 
+Sound01=1, g_Wave_River, 3-9, 100, 40, 0, 0, 0, 1 
+Sound02=2, s_Bed_Underwater, 0, 100, 96, 0, 0, 0, 2 
+; SHAPES 
+Shape00=1, 06016, 20096, 1408
+Shape01=1, 00512, 20224, 2304
+Shape02=1, 02816, 19712, 1792
+Shape03=1, 04224, 19840, 1536
+Shape04=1, 07936, 20352, 1408
+Shape05=1, 09600, 21120, 1792
+Shape06=1, 10496, 22784, 1536
+Shape07=1, 08960, 23936, 1280
+Shape08=1, 08832, 25344, 1664
+Shape09=1, 08832, 27904, 1664
+Shape10=1, 08960, 30720, 1664
+Shape11=1, 08704, 33408, 1664
+Shape12=1, 09216, 35456, 1536
+Shape13=1, 10624, 37248, 1536
+Shape14=1, 12672, 38016, 1536
+Shape15=1, 14080, 39808, 1792
+Shape16=1, 14208, 42624, 2176
+Shape17=1, 13824, 45696, 2176
+Shape18=1, 13696, 48256, 2048
+Shape19=1, 15232, 50176, 1664
+Shape20=1, 17280, 51328, 1536
+Shape21=1, 19584, 52096, 1664
+Shape22=1, 21760, 51712, 1408
+Shape23=1, 23424, 51200, 1280
+Shape24=1, 24960, 51072, 1280
+Shape25=1, 26624, 51328, 1280
+Shape26=1, 30080, 53120, 1408
+Shape27=1, 28160, 52224, 1280
+Shape28=1, 31872, 53504, 1408
+Shape29=1, 33792, 52608, 1536
+Shape30=1, 35840, 51712, 1536
+Shape31=1, 37888, 50816, 1664
+Shape32=1, 40192, 50816, 1536
+Shape33=1, 42112, 51712, 1536
+Shape34=1, 43520, 53376, 1792
+Shape35=1, 44544, 55424, 1792
+Shape36=1, 45952, 57728, 1920
+Shape37=1, 49280, 62336, 2304
+Shape38=1, 50304, 60544, 1920
+Shape39=1, 48000, 60032, 1536
+Shape40=1, 45952, 59520, 768
+Shape41=1, 47360, 64896, 2304
+
+[SoundRegion06];---------------------------------------------------------------------------------------------------[feature:village-large5]
+sound_type=1
+version=2
+random_sound_spacing=1
+ignore_random_offset=0
+instant_start=1
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=8
+fade_on_weather_time=5
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; SOUNDS 
+Sound00=2, s_Bed_Market, 0, 100, 40, 0501, 1930, 0, 1 
+Sound01=2, s_Bed_Market, 0, 100, 24, 1931, 0500, 0, 1 
+Sound02=1, g_Human_Speak1(d), 15-45, 100, 48, 0501, 1930, 1, 1 
+Sound03=1, g_Human_Speak2(d), 15-45, 100, 48, 0501, 1930, 1, 1 
+Sound04=1, g_Labor_Anvil, 10-30, 100, 64, 0901, 1630, 1, 1 
+Sound05=1, g_Labor_Axe, 10-30, 100, 64, 0901, 1630, 1, 1 
+Sound06=1, g_Labor_Chisel, 10-30, 100, 64, 0901, 1630, 1, 1 
+Sound07=1, g_Labor_Hammer, 10-30, 100, 64, 0901, 1630, 1, 1 
+Sound08=1, g_Labor_Anvil(d), 15-45, 100, 64, 0901, 1630, 1, 1 
+Sound09=1, g_Labor_Axe(d), 15-45, 100, 64, 0901, 1630, 1, 1 
+Sound10=1, g_Labor_Chisel(d), 15-45, 100, 64, 0901, 1630, 1, 1 
+Sound11=1, g_Labor_Hammer(d), 15-45, 100, 64, 0901, 1630, 1, 1 
+Sound12=1, g_Labor_Saw(d), 15-45, 100, 64, 0901, 1630, 1, 1 
+Sound13=1, g_Dog_Bark, 10-30, 100, 56, 0501, 1930, 1, 1 
+Sound14=1, g_Dog_Bark, 20-60, 100, 56, 1931, 0500, 1, 1 
+Sound15=1, g_Dog_Bark(d), 15-45, 100, 48, 0501, 1930, 1, 1 
+Sound16=1, g_Dog_Bark(d), 30-90, 100, 48, 1931, 0500, 1, 1 
+Sound17=1, g_Horse_Vocal, 10-30, 100, 72, 0501, 1930, 1, 1 
+Sound18=1, g_Horse_Vocal, 20-60, 100, 72, 1931, 0500, 1, 1 
+Sound19=1, g_Horse_Vocal(d), 15-45, 100, 56, 0501, 1930, 1, 1 
+Sound20=1, g_Horse_Vocal(d), 30-90, 100, 56, 1931, 0500, 1, 1 
+Sound21=1, g_Door_Close, 40-120, 100, 72, 0501, 1930, 0, 1 
+Sound22=1, g_Door_Close(d), 40-120, 100, 72, 0501, 1930, 0, 1 
+Sound23=1, g_Door_Open, 40-120, 100, 72, 0501, 1930, 0, 1 
+Sound24=1, g_Door_Open(d), 40-120, 100, 72, 0501, 1930, 0, 1 
+; SHAPES 
+Shape00=1, 11109, 28797, 5000 ; COTSWOLD VILLAGE
+
+[SoundRegion07];---------------------------------------------------------------------------------------------------[feature:village-small3]
+sound_type=1
+version=2
+random_sound_spacing=1
+ignore_random_offset=0
+instant_start=1
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=8
+fade_on_weather_time=5
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; SOUNDS 
+Sound00=1, g_Human_Speak1(d), 15-45, 100, 48, 0501, 1930, 1, 1 
+Sound01=1, g_Human_Speak2(d), 15-45, 100, 48, 0501, 1930, 1, 1 
+Sound02=1, g_Labor_Anvil, 10-30, 100, 64, 0901, 1630, 1, 1 
+Sound03=1, g_Labor_Axe, 10-30, 100, 64, 0901, 1630, 1, 1 
+Sound04=1, g_Labor_Chisel, 10-30, 100, 64, 0901, 1630, 1, 1 
+Sound05=1, g_Labor_Hammer, 10-30, 100, 64, 0901, 1630, 1, 1 
+Sound06=1, g_Labor_Anvil(d), 15-45, 100, 64, 0901, 1630, 1, 1 
+Sound07=1, g_Labor_Axe(d), 15-45, 100, 64, 0901, 1630, 1, 1 
+Sound08=1, g_Labor_Chisel(d), 15-45, 100, 64, 0901, 1630, 1, 1 
+Sound09=1, g_Labor_Hammer(d), 15-45, 100, 64, 0901, 1630, 1, 1 
+Sound10=1, g_Labor_Saw(d), 15-45, 100, 64, 0901, 1630, 1, 1 
+Sound11=1, g_Dog_Bark, 10-30, 100, 56, 0501, 1930, 1, 1 
+Sound12=1, g_Dog_Bark, 20-60, 100, 56, 1931, 0500, 1, 1 
+Sound13=1, g_Dog_Bark(d), 15-45, 100, 48, 0501, 1930, 1, 1 
+Sound14=1, g_Dog_Bark(d), 30-90, 100, 48, 1931, 0500, 1, 1 
+; SHAPES 
+Shape00=1, 25333, 47379, 2000 ; PRYDWEN KEEP
+
+[SoundRegion08];---------------------------------------------------------------------------------------------------------[object:bindstone]
+sound_type=1
+version=1
+random_sound_spacing=0
+ignore_random_offset=1
+instant_start=1
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=3
+fade_on_weather_time=0
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; SOUNDS 
+Sound00=2, s_Bindstone_Loop, 0, 100, 64, 0, 0, 0, 1 
+; SHAPES 
+Shape00=1, 11761, 28421, 500 ; IN COTSWOLD
+
+[SoundRegion09];--------------------------------------------------------------------------------------------------------[object:fire-large]
+sound_type=1
+version=1
+random_sound_spacing=0
+ignore_random_offset=1
+instant_start=1
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=3
+fade_on_weather_time=0
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; SOUNDS 
+Sound00=2, s_Fire_Loop_Large, 0, 100, 64, 0, 0, 0, 1 
+; SHAPES 
+Shape00=1, 08289, 28411, 0800 ; BRIDGE TOWER TORCH PAIR NEAR COTSWOLD VILLAGE
+
+[SoundRegion10];-------------------------------------------------------------------------------------------------------[object:fire-medium]
+sound_type=1
+version=1
+random_sound_spacing=0
+ignore_random_offset=1
+instant_start=1
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=3
+fade_on_weather_time=0
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; SOUNDS 
+Sound00=2, s_Fire_Loop_Medium, 0, 100, 64, 0, 0, 0, 1 
+; SHAPES 
+Shape00=1, 12286, 26961, 0500 ; FORGE FIRE PIT IN COTWSOLD VILLAGE
+Shape01=1, 50176, 12544, 0500 ; LOGFIRE.NIF
+Shape02=1, 44544, 18432, 0500 ; LOGFIRE.NIF
+Shape03=1, 51328, 29568, 0500 ; LOGFIRE.NIF
+Shape04=1, 53376, 20928, 0500 ; LOGFIRE.NIF
+Shape05=1, 55424, 22912, 0500 ; LOGFIRE.NIF
+Shape06=1, 09792, 50176, 0500 ; LOGFIRE.NIF
+Shape07=1, 15362, 25984, 0500 ; LOGFIRE.NIF
+Shape08=1, 18583, 45418, 0500 ; CEMETARY TORCH
+Shape09=1, 18582, 45202, 0500 ; CEMETARY TORCH
+Shape10=1, 17488, 44880, 0500 ; CEMETARY TORCH
+Shape11=1, 17651, 44880, 0500 ; CEMETARY TORCH
+
+[SoundRegion11];------------------------------------------------------------------------------------------------------------[object:portal]
+sound_type=1
+version=1
+random_sound_spacing=0
+ignore_random_offset=1
+instant_start=1
+fade_on_mp3=0
+fade_on_mp3_time=0
+fade_time=3
+fade_on_weather_time=0
+fade_on_underwater_time=1
+zone_wide_sounds=0
+
+; SOUNDS 
+Sound00=2, s_Powernode_Loop, 0, 100, 64, 0, 0, 0, 1 
+; SHAPES 
+Shape00=1, 16174, 25845, 1000
+
+; ==============================================================
+; AMBIENT MUSIC : DAY : AC1A : 2006-05-24 : now not zone-wide!
+; ==============================================================
+[SoundRegion49]
+sound_type=2
+version=1
+random_sound_spacing=5
+ignore_random_offset=0
+fade_on_mp3=1
+fade_on_mp3_time=1
+fade_time=5
+fade_on_weather_time=0
+fade_on_underwater_time=6
+zone_wide_sounds=0
+
+Sound00=1, 600, 13, 75, 99, 531, 1900, 0
+Sound01=1, 605, 15, 75, 99, 501, 1930, 0
+Sound02=1, 606, 14, 75, 99, 501, 1930, 0
+Sound03=1, 607, 10, 75, 99, 501, 1930, 0
+Sound04=1, 608, 09, 75, 99, 501, 1930, 0
+Sound05=1, 609, 08, 75, 99, 501, 1930, 0
+Sound06=1, 610, 07, 75, 99, 501, 1930, 0
+Sound07=1, 601, 18, 75, 99, 501, 1930, 0
+Sound08=1, 602, 17, 75, 99, 501, 1930, 0
+Sound09=1, 603, 16, 75, 99, 501, 1930, 0
+Sound10=1, 604, 15, 75, 99, 501, 1930, 0
+
+Shape00=0, 0, 0, 65535, 65535
+
+; XSHAPES
+xShape00=1, 17487, 45162, 1500 ; prydwen ossuary
+
+; ==============================================================
+; AMBIENT MUSIC : NIGHT : LT06 : 2006-05-24 : now not zone-wide!
+; ==============================================================
+[SoundRegion54]
+sound_type=2
+version=1
+random_sound_spacing=5
+ignore_random_offset=0
+fade_on_mp3=1
+fade_on_mp3_time=1
+fade_time=5
+fade_on_weather_time=0
+fade_on_underwater_time=6
+zone_wide_sounds=0
+
+Sound00=1, 701, 14, 75, 99, 2001, 430, 0
+Sound01=1, 702, 13, 75, 99, 2001, 430, 0
+Sound02=1, 703, 12, 75, 99, 2001, 430, 0
+Sound03=1, 704, 11, 75, 99, 2001, 430, 0
+Sound04=1, 695, 19, 75, 99, 1931, 500, 0
+Sound05=1, 696, 18, 75, 99, 1931, 500, 0
+Sound06=1, 697, 17, 75, 99, 1931, 500, 0
+Sound07=1, 698, 11, 75, 99, 1931, 500, 0
+Sound08=1, 699, 10, 75, 99, 1931, 500, 0
+Sound09=1, 700, 09, 75, 99, 1931, 500, 0
+
+Shape00=0, 0, 0, 65535, 65535
+
+; XSHAPES
+xShape00=1, 17487, 45162, 1500 ; prydwen ossuary
+

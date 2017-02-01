@@ -44,7 +44,7 @@ int main()
 	//PcxReader *conver = new PcxReader();
 
 	//std::vector<unsigned char> data;
-	//conver->readPCX("C:\\temp\\offset.pcx", &data);
+	//conver->readPCX("C:\\tmp\\terrain.pcx", &data);
 
 	/**************************************************************
 	* ZoneDataExtractor

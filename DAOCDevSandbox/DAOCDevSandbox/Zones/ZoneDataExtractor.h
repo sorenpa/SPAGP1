@@ -36,7 +36,8 @@ enum Zones_e
 	Zone210, //Mount Collory     
 	Zone211, //Cruachan Gorge    
 	Zone212, //Breifine          
-	Zone214, //Emain Macha       
+	Zone214, //Emain Macha    
+	Zone249, //Darkness Falls
 
 	//Albion
 	Zone026, //Camelot				
@@ -108,6 +109,7 @@ static std::map<Zones_e, std::string> zoneIdMap =
 	{Zone211, "211"},
 	{Zone212, "212"},
 	{Zone214, "214"},
+	{Zone249, "249"},
 
 	//Albion 
 	{Zone026, "026"},
@@ -172,8 +174,14 @@ public:
 	int GenerateHeightMap(std::string outputPath);		
 	
 private:
+	std::map<std::string, std::map<std::string, std::string>> _sectorData;
+	
+	int WritePng(std::string file, std::vector<char>* data, short width, short height);
+	int readSectorDat(std::vector<char>* data);
+	int getSectorField(std::string label, std::string fieldName, std::string *result);
+
 	Zones_e _zone;
-	int WritePng(std::string file, std::vector<unsigned char>* data, short width, short height);
+	
 };
 
 

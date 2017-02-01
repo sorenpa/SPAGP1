@@ -5,8 +5,14 @@
 
 E002_<Import DAOC zones into UE4 engine>::<>
 	S01:E002_<Find a way to read .mpk archive files> #DONE
-	S02:E002_<Create classes to extract the map data for a zone>
-	S03:E002_<Find a way to feed UE4 engine with the .mpk map file data in order to create the world.>
+	S02:E002_<Create classes to extract the heightmap data for a zone> #Done
+	S03:E002_<Find a way to feed UE4 engine with the heightmap>
+	S04:E002_<Find a way to import terrain textures into UE4>
+	S05:E002_<Find a way to import water into UE4>
+	S06:E002_<Find a way to import vegetation(Trees+foilage) into UE4>
+	S07:E002_<Find a way to import lights into UE4>
+	S08:E002_<Find a way to import snow into UE4>
+	S09:E002_<Find a way to import buildings into UE4>
 	
 ========================================================================
 	Board
@@ -15,13 +21,13 @@ E002_<Import DAOC zones into UE4 engine>::<>
 S02:E002_<Create classes to extract the map data for a zone>																			|
 --------------------------------------------------------------------------------------------------------------------------------
 #TODO
+- Find the scale/stretch factor for UE4
+- Find the position of the zone UE4
+- Import a full classic realm into UE4
+
+#DONE
 - Generate height map
-- Vegetation
-- lights
-- textures
-- buildings
-- water
-- snow
+
 
 ========================================================================
 	Story template
