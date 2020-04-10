@@ -1,9 +1,0 @@
-========================================================================
-	Completed Log
-========================================================================
-
-1. Setup a UE4 Project (USER STORY)#DONE
-	1.1 - Investigate and decide upon file structure #DONE
-	1.2 - Download and install the UE4 Engine #DONE
-	1.3 - Create a UE4 project and implement the structure from 1.1 #DONE
-	1.4 - Add the project to github SPAGP1 #DONE
